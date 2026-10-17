@@ -57,18 +57,43 @@
   .small-btn.red.confirm { background: var(--bad); color: #fff; }
   .small-btn[disabled] { opacity: .45; }
   .gap { height: 18px; }
+  .sync { max-width: 560px; margin: 6px auto 0; padding: 0 16px; }
+  .sync .note { margin: 0; display: flex; align-items: center; gap: 10px; }
+  .sync .note span { flex: 1; min-width: 0; }
   .note { border-radius: 16px; padding: 12px 16px; margin-top: 12px; font-size: 17px; }
   .note.warn { background: var(--warn-soft); color: var(--warn); } .note.ok { background: var(--ok-soft); color: var(--ok); } .note.bad { background: var(--bad-soft); color: var(--bad); }
   .note.brand { background: var(--brand-50); color: var(--brand-edge); }
   nav.tabs { position: fixed; left: 0; right: 0; bottom: 0; z-index: 5; display: flex; justify-content: center; gap: 4px;
     background: rgba(255,255,255,.96); backdrop-filter: blur(8px); border-top: 1px solid var(--line); padding: 8px 10px calc(8px + env(safe-area-inset-bottom)); }
-  nav.tabs button { flex: 1; max-width: 120px; min-height: 64px; border-radius: 20px; font-size: 13px; font-weight: 700; color: var(--muted); padding: 0 2px; position: relative; }
+  nav.tabs button { flex: 1; max-width: 160px; min-height: 64px; border-radius: 20px; font-size: 16px; font-weight: 700; color: var(--muted); padding: 0 2px; position: relative; }
   nav.tabs button svg { display: block; margin: 0 auto 2px; width: 28px; height: 28px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
-  nav.tabs button.on { background: var(--brand-soft); color: var(--brand-edge); }
+  @media (min-width: 900px) { nav.tabs button.onm { background: none; color: var(--muted); } }
+  nav.tabs button.on, nav.tabs button.onm { background: var(--brand-soft); color: var(--brand-edge); }
+  nav.tabs button.dk { display: none; }
+  .topbar { position: sticky; top: 0; z-index: 4; max-width: 560px; margin: 0 auto; padding: 8px 16px; display: flex; align-items: center; gap: 12px; background: var(--bg); }
+  .topbar[hidden] { display: none; }
+  .topbar .back { min-height: 56px; padding: 0 20px 0 14px; border-radius: 20px; background: #fff; border: 3px solid #FFD0A8; box-shadow: 0 4px 0 #FFD0A8; color: var(--brand-ink); font-size: 20px; font-weight: 800; flex: none; }
+  .topbar .back:active { transform: translateY(3px); box-shadow: 0 1px 0 #FFD0A8; }
+  .topbar b { font-family: var(--display); font-size: 24px; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .tiles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-bottom: 14px; }
+  .tile { display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start; gap: 6px; min-height: 168px; padding: 16px; text-align: left; border-radius: var(--r); background: #fff; border: 2px solid var(--line); box-shadow: var(--shadow); }
+  .tile:active { transform: translateY(3px); }
+  .tile .ti { width: 56px; height: 56px; border-radius: 18px; background: var(--brand-soft); color: var(--brand-edge); display: grid; place-items: center; flex: none; }
+  .tile .ti svg { width: 32px; height: 32px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+  .tile b { font-family: var(--display); font-size: 26px; line-height: 1.2; }
+  .tile small { font-size: 16px; font-weight: 600; color: var(--muted); line-height: 1.35; }
+  .tile.alert { border-color: var(--brand); }
   nav.tabs .badge { position: absolute; top: 4px; right: 14px; min-width: 22px; height: 22px; padding: 0 6px; border-radius: 999px; background: var(--bad); color: #fff; font-size: 13px; line-height: 22px; }
   .seg { display: flex; gap: 8px; margin-bottom: 14px; }
   .seg button { flex: 1; min-width: 0; min-height: 52px; border-radius: 14px; background: #fff; border: 2px solid var(--line); font-size: 17px; font-weight: 600; padding: 6px 2px; white-space: nowrap; }
   .seg button.on, .grid3 button.on, .chips button.on { border-color: var(--brand); background: var(--brand-50); color: var(--brand-edge); }
+  .catsel { display: flex; align-items: center; gap: 10px; width: 100%; min-height: 64px; padding: 8px 18px; border-radius: 22px; background: #fff; border: 3px solid var(--brand); box-shadow: 0 4px 0 #FFD0A8; margin-bottom: 12px; text-align: left; font-size: 20px; }
+  .catsel b { flex: 1; min-width: 0; font-family: var(--display); font-size: 24px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .catsel i { font-style: normal; font-weight: 700; color: var(--muted); }
+  .catsel svg { width: 22px; height: 22px; flex: none; fill: none; stroke: currentColor; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; transition: transform .15s; }
+  .catsel[aria-expanded="true"] svg { transform: rotate(180deg); }
+  .stickygo { position: sticky; bottom: calc(86px + env(safe-area-inset-bottom)); z-index: 3; }
+  .grid3.bstrip { display: none; }
   .grid3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-bottom: 14px; }
   .grid3 button { min-height: 52px; border-radius: 14px; background: #fff; border: 2px solid var(--line); font-size: 16px; font-weight: 700; padding: 4px; }
   .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
@@ -101,6 +126,9 @@
   .step button { width: 52px; height: 52px; border-radius: 16px; background: var(--brand-50); border: 2px solid #FFD0A8; color: var(--brand-ink); font-size: 28px; font-weight: 800; line-height: 1; }
   .step input { width: 84px; text-align: center; font-weight: 700; font-variant-numeric: tabular-nums; padding: 8px 4px; }
   .step input.done { border-color: var(--brand); background: var(--brand-50); }
+  .thumb { width: 52px; height: 52px; border-radius: 14px; object-fit: cover; border: 2px solid var(--line); background: var(--brand-50); flex: none; }
+  .thumb.big { width: 120px; height: 120px; border-radius: 20px; }
+  .citem .thumb { width: 44px; height: 44px; border-radius: 12px; }
   .citem { display: flex; align-items: center; gap: 10px; padding: 12px 0; border-bottom: 1px solid var(--line); }
   .citem:last-child { border-bottom: 0; }
   .citem .main { flex: 1; min-width: 0; }
@@ -133,7 +161,7 @@
   .steps i { height: 8px; border-radius: 99px; background: #EADCCF; } .steps i.on { background: var(--brand); }
   .stepname { color: var(--brand-ink); font-weight: 700; font-size: 17px; margin-bottom: 10px; }
   .bigcode { font-family: var(--display); font-weight: 700; font-size: 34px; letter-spacing: 3px; }
-  .qr { width: 168px; height: 168px; padding: 8px; background: #fff; border: 3px solid var(--ink); border-radius: 18px; flex: none; }
+  .qr { width: 148px; height: 148px; padding: 8px; background: #fff; border: 3px solid var(--ink); border-radius: 18px; flex: none; }
   .qr img, .qr canvas { width: 100% !important; height: 100% !important; }
   .ck { display: flex; gap: 12px; align-items: flex-start; padding: 10px 0; border-bottom: 2px solid var(--line); font-size: 18px; }
   .ck:last-child { border-bottom: 0; }
@@ -201,6 +229,10 @@
     main { padding: 10px 28px 0; }
     nav.tabs { top: 0; right: auto; width: 216px; flex-direction: column; justify-content: flex-start; gap: 6px;
       border-top: 0; border-right: 1px solid var(--line); padding: 100px 12px 16px; }
+    nav.tabs button.dk { display: flex; }
+    .topbar { display: none; }
+    .tiles { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .stickygo { bottom: 12px; }
     nav.tabs button { flex: none; max-width: none; min-height: 56px; display: flex; align-items: center; gap: 12px; padding: 0 16px; font-size: 17px; text-align: left; }
     nav.tabs button svg { margin: 0; flex: none; }
     nav.tabs .badge { position: static; margin-left: auto; }
@@ -208,6 +240,7 @@
     .btn { min-height: 72px; font-size: 26px; }
     .wide { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 16px; align-items: start; }
     .grid3.boss { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+    .grid3.bstrip { display: grid; }
     .clist { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 28px; }
     .clist .citem:nth-last-child(2):nth-child(odd) { border-bottom: 0; }
     .stat3.four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
@@ -229,6 +262,8 @@
   <div class="who"><div class="shop" id="title">โคตรพร้อม สต็อก</div><h1 id="who">กำลังเปิด…</h1></div>
   <button class="adminbtn" id="adminBtn" hidden>แอดมิน</button>
 </header>
+<div id="topbar" class="topbar" hidden></div>
+<div id="sync" class="sync" hidden></div>
 <main id="app"><div class="loading"><div class="bowl"></div><div class="shadow"></div><div class="msg">น้องพร้อมวิ่งมาแล้วน้า~</div><div class="dots"><span></span><span></span><span></span></div></div><div class="skel s2"></div><div class="skel"></div></main>
 <nav class="tabs" id="tabs" hidden></nav>
 <div id="toast"></div>
@@ -238,11 +273,11 @@
 'use strict';
 // ★ วางไฟล์นี้บน GitHub Pages: แก้แค่ API_URL บรรทัดเดียว = URL ของ Apps Script (…/exec) · ทุกร้านใช้ไฟล์นี้ไฟล์เดียว
 //   ลิงก์ของแต่ละร้าน = https://liff.line.me/<LIFF_ID>?shop=<รหัสร้าน> (ระบบสร้างให้ตอนสร้างร้าน)
-const API_URL = "https://script.google.com/macros/s/AKfycbyX25e3Jt7YxBHXmgnBNuFiLgsfyCLFdsu3kUnMAm3eBNcBkqQlDY3jjpML_770rs9SLA/exec";
+const API_URL = 'https://script.google.com/macros/s/AKfycbyX25e3Jt7YxBHXmgnBNuFiLgsfyCLFdsu3kUnMAm3eBNcBkqQlDY3jjpML_770rs9SLA/exec';
 let LIFF_ID = '__LIFF_ID__';
 
 let S = null, NO_SHOP = null, IS_ADMIN = false, idToken = '';
-let tab = 'count', bossTab = 'sum';
+let tab = 'home', bossTab = '';
 let busy = {}, armed = '', armTimer = null;
 let SHOP = shopFromUrl();
 
@@ -322,7 +357,10 @@ async function boot() {
     idToken = liff.getIDToken();
     if (!idToken) return fatal('ไม่ได้รับ ID token — เปิด scope "openid" ในหน้า LIFF ของ LINE Developers');
   } catch (e) { return fatal('เปิด LIFF ไม่สำเร็จ: ' + e.message); }
-  await refresh(true);
+  outboxBar();
+  const cached = SHOP ? load(cacheKey(), null) : null;
+  if (cached && cached.ok && cached.registered) { tab = 'home'; setState(cached, true); refresh(false); } else await refresh(true);
+  flushOutbox();
   setInterval(() => { if (!document.hidden && !anyBusy() && !editing()) refresh(); }, 90000);
   document.addEventListener('visibilitychange', () => { if (!document.hidden && !anyBusy() && !editing()) refresh(); });
 }
@@ -332,10 +370,17 @@ function fatal(msg) {
 }
 
 // ---------- คุยกับเซิร์ฟเวอร์ ----------
+const API_TIMEOUT = 20000;   // เน็ตค้างเกิน 20 วิ = ตัดแล้วลองใหม่ (จอไม่ค้าง)
 async function api(action, extra) {
   const body = JSON.stringify(Object.assign({ action, idToken, shop: SHOP }, extra || {}));
-  const res = await fetch(API_URL + '?api=1', { method: 'POST', body });   // text/plain → ไม่ต้อง preflight
-  const j = await res.json();
+  const ac = new AbortController(), timer = setTimeout(() => ac.abort(), API_TIMEOUT);
+  let j;
+  try {
+    const res = await fetch(API_URL + '?api=1', { method: 'POST', body, signal: ac.signal });   // text/plain → ไม่ต้อง preflight
+    j = await res.json();
+  } catch (e) {
+    throw new Error(e && e.name === 'AbortError' ? 'เซิร์ฟเวอร์ตอบช้า' : (e && e.message) || 'เน็ตมีปัญหา');
+  } finally { clearTimeout(timer); }
   if (j && j.auth) {
     if (!sessionStorage.getItem('reauth')) { sessionStorage.setItem('reauth', '1'); location.reload(); }
     throw new Error(j.error || 'ยืนยันตัวตนไม่ผ่าน');
@@ -355,44 +400,122 @@ async function refresh(first) {
     else toast('⚠️ เน็ตไม่เสถียร — ตัวเลขอาจยังไม่อัปเดต', 'warn');
   }
 }
-function setState(j) {
+// สถานะล่าสุดเก็บในเครื่อง (แยกตามคนที่ล็อกอิน) → เปิดแอปครั้งต่อไปเห็นหน้าทันที แล้วค่อยอัปเดตเบื้องหลัง
+let stateSig = '', draftsOn = false;
+function uidKey() {
+  try { return String(JSON.parse(atob(idToken.split('.')[1].replace(/-/g, '+').replace(/_/g, '/'))).sub || '').slice(0, 40); } catch (e) { return ''; }
+}
+const cacheKey = () => 'kps.state.' + uidKey() + '.' + SHOP;
+const draftKey = () => 'kps.drafts.' + uidKey() + '.' + SHOP;
+function sigOf(j) { const c = Object.assign({}, j); delete c.now; return JSON.stringify(c); }
+function keepState(j) {
+  stateSig = sigOf(j);
+  if (j && j.ok && j.registered && SHOP && uidKey()) store(cacheKey(), j);
+}
+function setState(j, fromCache) {
+  const same = !fromCache && S && sigOf(j) === stateSig;
   S = j;
   IS_ADMIN = !!j.admin;
   if (j.shop && j.shop.id && j.shop.id !== SHOP) rememberShop(j.shop.id);
+  if (!fromCache) keepState(j); else stateSig = sigOf(j);
+  if (!draftsOn) { draftsOn = true; restoreDrafts(); }
+  if (same) return;                       // ไม่มีอะไรเปลี่ยน ไม่วาดทับ (กันหน้าสะดุดตอนกำลังใช้)
   if (tab !== 'admin') render(); else adminButton();
 }
+// ฉบับร่างของฟอร์ม (รับของ · ทิ้งของ · ใบสั่ง) เก็บในเครื่อง ปิดแอปแล้วเปิดใหม่ไม่หาย
+let draftSig = '';
+function saveDrafts() {
+  if (!S || !S.registered || !SHOP || !uidKey()) return;
+  const rc = rcv ? Object.assign({}, rcv, { photo: '' }) : null;
+  const d = { rcv: rc, wst, od };
+  const sig = JSON.stringify(d);
+  if (sig === draftSig) return;
+  draftSig = sig;
+  if (rc || wst || od) store(draftKey(), d); else store(draftKey());
+}
+function restoreDrafts() {
+  const d = load(draftKey(), null);
+  if (!d || !S || !S.items) return;
+  const ok = id => !!itemById(id);
+  if (d.rcv && !rcv) { d.rcv.lines = (d.rcv.lines || []).filter(l => ok(l.id)); if (d.rcv.lines.length) rcv = d.rcv; }
+  if (d.wst && !wst && ok(d.wst.id)) wst = d.wst;
+  if (d.od && !od) { d.od.lines = (d.od.lines || []).filter(l => ok(l.id)); if (d.od.lines.length) od = d.od; }
+  draftSig = JSON.stringify({ rcv: rcv ? Object.assign({}, rcv, { photo: '' }) : null, wst, od });
+}
+setInterval(saveDrafts, 2500);
+addEventListener('pagehide', saveDrafts);
+document.addEventListener('visibilitychange', () => { if (document.hidden) saveDrafts(); });
 
 /**
  * ทำงาน 1 ปุ่ม: บันทึกเบื้องหลัง ไม่ล็อกจอ · rid เดิมเมื่อส่งซ้ำ → เซิร์ฟเวอร์บันทึกครั้งเดียว
  * (แบบเดียวกับแอปลงเวลาโคตรพร้อม)
  */
-async function act(action, extra, key) {
+async function act(action, extra, key, queue) {
   key = key || action;
   if (busy[key]) return null;
   const rid = pendingRid(key);
   busy[key] = true;
   rerender();
   let res = null, lastErr = null;
-  for (let i = 0; i < 3 && !res; i++) {
+  for (let i = 0; i < 2 && !res; i++) {
     try { res = await api(action, Object.assign({ rid }, extra || {})); }
-    catch (e) { lastErr = e; await sleep(1000 * (i + 1) * (i + 1)); }
+    catch (e) { lastErr = e; if (i < 1) await sleep(1000); }
   }
   busy[key] = false;
   if (!res) {
+    // งานที่ฟอร์มกรอกยาว (นับ/รับ/ทิ้ง/สั่ง…): เก็บไว้ส่งเองเมื่อเน็ตกลับ ไม่ให้คนกรอกใหม่ · เซิร์ฟเวอร์กันบันทึกซ้ำด้วย rid
+    if (queue) {
+      outboxAdd({ id: rid, shop: SHOP, action, extra: Object.assign({ rid }, extra || {}), key, at: Date.now() });
+      clearPending(key);
+      rerender();
+      toast('📶 เน็ตไม่เสถียร เก็บไว้ให้แล้วน้า\nจะส่งให้เองเมื่อเน็ตกลับ ไม่ต้องกรอกใหม่', 'warn', 8000);
+      return { ok: true, queued: true };
+    }
     rerender();
     toast('📶 ' + nong('offline') + '\nกดปุ่มเดิมอีกครั้งได้เลย ระบบจะไม่บันทึกซ้ำ\n(' + (lastErr ? lastErr.message : '') + ')', 'bad', 9000);
     return null;
   }
   clearPending(key);
   if (res.ok) moreOpen = '';
-  if (res.state && res.state.ok) { S = res.state; }
+  if (res.state && res.state.ok) { S = res.state; keepState(S); }
   rerender();
   if (res.text) toast(res.text + '\n' + (res.ok ? nong('ok') : nong('error')), res.ok ? 'ok' : 'bad', res.ok ? 6000 : 9000);
   else if (res.error) toast(res.error + '\n' + nong('error'), 'bad', 9000);
   if (res.ok && res.share) shareToGroup(res.share);
   return res;
 }
-function rerender() { if (tab === 'admin') renderAdmin(); else render(); }
+function rerender() { if (tab === 'admin') { try { renderAdmin(); } catch (e) { crash(e); } } else render(); }
+
+// ---------- กล่องส่งค้าง: เน็ตหลุดตอนกดบันทึก → เก็บไว้ส่งเอง (rid เดิม เซิร์ฟเวอร์ไม่บันทึกซ้ำ) ----------
+let flushing = false;
+const outboxList = () => load('kps.outbox', []);
+function outboxAdd(e) { const l = outboxList(); if (!l.some(x => x.id === e.id)) l.push(e); store('kps.outbox', l); outboxBar(); }
+function outboxBar() {
+  const el = $('sync'), n = outboxList().length;
+  if (!el) return;
+  el.hidden = !n;
+  if (!n) { el.innerHTML = ''; return; }
+  el.innerHTML = `<div class="note warn"><span>📶 ค้างส่ง ${n} รายการ · กำลังลองใหม่ให้เอง</span><button class="small-btn ghost" id="syncGo">ส่งตอนนี้</button></div>`;
+  on('syncGo', flushOutbox);
+}
+async function flushOutbox() {
+  if (flushing || !idToken) return;
+  flushing = true;
+  try {
+    for (const e of outboxList()) {
+      let res;
+      try { res = await api(e.action, Object.assign({}, e.extra, { shop: e.shop })); }
+      catch (err) { break; }                                  // ยังไม่มีเน็ต ไว้รอบหน้า
+      store('kps.outbox', outboxList().filter(x => x.id !== e.id));
+      if (res && res.state && res.state.ok && res.state.shop && res.state.shop.id === SHOP) { S = res.state; keepState(S); }
+      toast(res && res.ok ? '✅ ส่งที่ค้างไว้สำเร็จแล้ว\n' + (res.text || '') : '⚠️ ส่งที่ค้างไว้ไม่สำเร็จ: ' + ((res && res.error) || 'ลองทำใหม่อีกครั้งน้า'), res && res.ok ? 'ok' : 'bad', 7000);
+      if (res && res.ok && res.share) shareToGroup(res.share);
+    }
+  } finally { flushing = false; outboxBar(); rerender(); }
+}
+addEventListener('online', flushOutbox);
+document.addEventListener('visibilitychange', () => { if (!document.hidden && outboxList().length) flushOutbox(); });
+setInterval(() => { if (!document.hidden && outboxList().length) flushOutbox(); }, 20000);
 function pendingRid(key) {
   const k = 'kps.rid:' + key, p = load(k, null);
   if (p && Date.now() - p.at < 10 * 60000) return p.rid;
@@ -477,11 +600,11 @@ function download(name, text) {
   } catch (e) { toast('ดาวน์โหลดไม่ได้ ลองเปิดในคอมพิวเตอร์น้า', 'bad'); }
 }
 /** ย่อรูปบิลบนมือถือก่อนส่ง (ด้านยาวสุด 1280px) → ประหยัดเน็ตและพื้นที่ไดรฟ์ */
-function shrinkImage(file) {
+function shrinkImage(file, max) {
   return new Promise((ok, no) => {
     const img = new Image();
     img.onload = () => {
-      const k = Math.min(1, 1280 / Math.max(img.width, img.height)), c = document.createElement('canvas');
+      const k = Math.min(1, (max || 1280) / Math.max(img.width, img.height)), c = document.createElement('canvas');
       c.width = Math.round(img.width * k); c.height = Math.round(img.height * k);
       c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
       URL.revokeObjectURL(img.src);
@@ -518,6 +641,7 @@ function pendingShareCard() {
 
 // ---------- โครงหน้าจอ ----------
 const ICON = {
+  home: 'M3 11l9-7.5L21 11M5.5 9.5V20.5h13V9.5M10 20.5v-6h4v6',
   count: 'M9 3h6v3H9zM7 4.5H5v16.5h14V4.5h-2M8.5 13l2.5 2.5 4.5-5',
   recv: 'M3 7.5l9-4.5 9 4.5v9l-9 4.5-9-4.5zM3 7.5l9 4.5 9-4.5M12 12v9',
   waste: 'M4 7h16M9.5 7V4h5v3M6 7l1.2 13.5h9.6L18 7M10 11v6M14 11v6',
@@ -531,21 +655,35 @@ function adminButton() {
   b.textContent = tab === 'admin' ? 'กลับร้าน' : 'แอดมิน';
   b.onclick = () => {
     armed = ''; moreOpen = '';
-    if (tab === 'admin') { tab = 'count'; if (S) render(); else if (NO_SHOP) renderNoShop(); else refresh(); }
+    if (tab === 'admin') { tab = 'home'; if (S) render(); else if (NO_SHOP) renderNoShop(); else refresh(); }
     else { tab = 'admin'; adm = { view: 'home' }; renderAdmin(); loadAdmin(); }
   };
 }
 let skipSetup = false;
-function render() {
+function crash(e) {
+  try { console.error(e); } catch (x) {}
+  const a = document.getElementById('app');
+  if (!a) return;
+  a.innerHTML = `<div class="card hero"><div class="hm">${nongSvg('sad', 110)}</div><h2 style="margin:0">อุ๊ย หน้าจอสะดุดนิดนึง</h2>
+    <div class="muted">ข้อมูลที่บันทึกแล้วไม่หาย · กดโหลดใหม่ได้เลยน้า</div></div><button class="btn" id="crashGo">โหลดใหม่</button>`;
+  const b = document.getElementById('crashGo');
+  if (b) b.onclick = () => location.reload();
+}
+function render() { try { renderMain(); } catch (e) { crash(e); } }
+function renderMain() {
   adminButton();
   if (tab === 'admin') return renderAdmin();
   if (!S) return;
   $('title').textContent = S.shop.name + ' · โคตรพร้อม สต็อก';
   if (!S.registered) { $('who').textContent = 'ยินดีต้อนรับ'; return renderRegister(); }
   $('who').textContent = 'สวัสดี ' + S.me.name;
-  const tabs = [['count', 'นับของ'], ['recv', 'รับของ'], ['waste', 'ทิ้งของ'], ['order', 'สั่งของ'], ['more', 'อื่นๆ']];
+  $('topbar').hidden = true;
+  // มือถือ: 3 ปุ่ม (หน้าแรก · จัดการ · เพิ่มเติม) · คอม: เมนูซ้ายครบ (dk = เฉพาะจอกว้าง)
+  const tabs = [['home', 'หน้าแรก'], ['count', 'นับของ', 1], ['recv', 'รับของ', 1], ['waste', 'ทิ้งของ', 1], ['order', 'สั่งของ', 1]];
   if (S.me.boss) tabs.push(['boss', 'จัดการ']);
-  if (tab === 'boss' && !S.me.boss) tab = 'count';
+  tabs.push(['more', 'เพิ่มเติม']);
+  if (tab === 'boss' && !S.me.boss) tab = 'home';
+  const TASK = { count: 'นับของ', recv: 'รับของ', waste: 'ทิ้งของ', order: 'สั่งของ' };
   const ordered = {};
   S.orders.forEach(o => { if (o.status !== 'รับแล้ว') o.lines.forEach(l => { ordered[l.id] = 1; }); });
   const lowN = S.items.filter(i => i.low && !ordered[i.id]).length, waitN = S.orders.filter(o => o.status === 'รออนุมัติ').length;
@@ -555,22 +693,58 @@ function render() {
   nav.innerHTML = tabs.map(t => {
     const badge = t[0] === 'order' && (lowN || (S.me.boss && waitN)) ? `<span class="badge">${S.me.boss && waitN ? waitN : lowN}</span>` :
                   t[0] === 'more' && S.incoming ? `<span class="badge">${S.incoming}</span>` : '';
-    return `<button class="${tab === t[0] ? 'on' : ''}" data-tab="${t[0]}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="${ICON[t[0]]}"/></svg>${t[1]}${badge}</button>`;
+    const cls = (tab === t[0] ? 'on' : t[0] === 'home' && TASK[tab] ? 'onm' : '') + (t[2] ? ' dk' : '');
+    return `<button class="${cls.trim()}" data-tab="${t[0]}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="${ICON[t[0]]}"/></svg>${t[1]}${badge}</button>`;
   }).join('');
   nav.querySelectorAll('button').forEach(b => b.onclick = () => {
-    tab = b.dataset.tab; armed = ''; moreOpen = ''; render(); window.scrollTo(0, 0);
+    if (b.dataset.tab === 'boss') { bossTab = ''; itEdit = supEdit = rcEdit = itPick = null; }
+    tab = b.dataset.tab; armed = ''; moreOpen = ''; nw = null; render(); window.scrollTo(0, 0);
     if (tab === 'boss') loadBoss();
     if (tab === 'more') loadMore();
   });
   const app = $('app');
+  if (nw) return renderNew(app);
   if (S.setup && S.me.boss && !skipSetup && tab !== 'boss') return renderSetup(app);
-  if (tab === 'count') renderCount(app);
+  if (TASK[tab]) {
+    const tb = $('topbar');
+    tb.hidden = false;
+    tb.innerHTML = `<button class="back" id="goHome">‹ หน้าแรก</button><b>${TASK[tab]}</b>`;
+    on('goHome', () => { tab = 'home'; armed = ''; moreOpen = ''; render(); window.scrollTo(0, 0); });
+  } else if (tab === 'boss' && bossTab) {
+    const tb = $('topbar');
+    tb.hidden = false;
+    tb.innerHTML = `<button class="back" id="goHome">‹ จัดการ</button><b>${esc(bossTitle(bossTab))}</b>`;
+    on('goHome', () => { bossTab = ''; itEdit = supEdit = rcEdit = itPick = null; armed = ''; moreOpen = ''; render(); window.scrollTo(0, 0); });
+  }
+  if (tab === 'home') renderHome(app);
+  else if (tab === 'count') renderCount(app);
   else if (tab === 'recv') renderRecv(app);
   else if (tab === 'waste') renderWaste(app);
   else if (tab === 'order') renderOrder(app);
   else if (tab === 'more') renderMore(app);
   else renderBoss(app);
   on('bShare', () => shareToGroup(pendingShare));
+}
+
+// ---------- หน้าแรก: ปุ่มใหญ่ 4 ปุ่มงานประจำวัน (คนไม่คล่องมือถือเห็นแค่นี้) ----------
+function renderHome(app) {
+  const ordered = {};
+  S.orders.forEach(o => { if (o.status !== 'รับแล้ว') o.lines.forEach(l => { ordered[l.id] = 1; }); });
+  const lowN = S.items.filter(i => i.low && !ordered[i.id]).length, waitN = S.orders.filter(o => o.status === 'รออนุมัติ').length;
+  const openN = S.orders.filter(o => o.status === 'อนุมัติ' || o.status === 'ส่งแล้ว').length;
+  const tiles = [
+    ['count', 'นับของ', S.lastCount ? 'นับล่าสุด ' + esc(S.lastCount.at) : 'ยังไม่เคยนับ', false],
+    ['recv', 'รับของ', openN ? `<span class="pill warn">รอรับ ${openN} ใบ</span>` : 'รับตามใบสั่ง หรือนอกใบสั่ง', openN > 0],
+    ['waste', 'ทิ้งของ', 'บันทึกของเสีย หมดอายุ', false],
+    ['order', 'สั่งของ', S.me.boss && waitN ? `<span class="pill warn">รออนุมัติ ${waitN} ใบ</span>` : lowN ? `<span class="pill warn">ใกล้หมด ${lowN} อย่าง</span>` : S.me.boss ? 'ทำใบสั่ง · อนุมัติ' : 'ขอของที่ใกล้หมด', (S.me.boss && waitN > 0) || lowN > 0]
+  ];
+  app.innerHTML = pendingShareCard() + `<div class="center" style="margin:4px 0 10px"><div style="line-height:0">${nongSvg('happy', 84)}</div><div style="font-family:var(--display);font-size:24px;font-weight:700">วันนี้จะทำอะไรดี?</div></div>
+    <div class="tiles">${tiles.map(t => `<button class="tile${t[3] ? ' alert' : ''}" data-go="${t[0]}"><span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="${ICON[t[0]]}"/></svg></span><b>${t[1]}</b><small>${t[2]}</small></button>`).join('')}</div>
+    ${S.incoming ? `<div class="card"><div class="note warn" style="margin-top:0">🚚 มีของโอนเข้า ${S.incoming} รายการ รอรับ</div><button class="small-btn" id="hInc" style="width:100%;margin-top:10px">ไปรับของโอน</button></div>` : ''}
+    ${S.me.boss ? '<button class="btn quiet" id="hMgr">จัดการร้าน<small>สรุป · รายงาน · ของในร้าน · บิล · ทีมงาน</small></button>' : ''}`;
+  app.querySelectorAll('[data-go]').forEach(b => b.onclick = () => { tab = b.dataset.go; armed = ''; moreOpen = ''; render(); window.scrollTo(0, 0); });
+  on('hMgr', () => { tab = 'boss'; bossTab = ''; render(); loadBoss(); window.scrollTo(0, 0); });
+  on('hInc', () => { tab = 'more'; render(); loadMore(); window.scrollTo(0, 0); });
 }
 
 // ---------- ร้านใหม่: ตั้งของในร้านครั้งแรก (ไม่ต้องเปิดชีต) ----------
@@ -581,6 +755,7 @@ function renderSetup(app) {
   app.innerHTML = `
     <div class="card hero orange"><div class="hm">${nongSvg('happy', 120)}</div>
       <h2 style="margin:4px 0 0;font-size:26px">มาตั้งของในร้านกันน้า~</h2><div style="font-weight:600">ใส่ของที่ร้านต้องนับ ทำครั้งเดียว แก้ทีหลังได้</div></div>
+    <button class="btn" id="suPick">เลือกของจากคลัง (แนะนำ)<small>${CAT ? CAT.cats.reduce((n, c) => n + c.items.length, 0) : 'หลายร้อย'} อย่าง · หมู ไก่ เป็ด เนื้อ ทะเล ผัก เครื่องดื่ม ฯลฯ</small></button><div class="gap"></div>
     <div class="card"><h2>1. ใช้รายการตั้งต้น</h2><div class="muted" style="margin-bottom:10px">ได้ของที่ร้านส่วนใหญ่ใช้ แล้วค่อยลบ/แก้</div>
       <div class="types three">${[['food', 'ร้านอาหาร'], ['cafe', 'คาเฟ่'], ['night', 'ร้านเปิดดึก']].map(t =>
         `<button data-st="${t[0]}" class="${setupType === t[0] ? 'on' : ''}">${t[1]}</button>`).join('')}</div>
@@ -595,42 +770,54 @@ function renderSetup(app) {
   on('suTpl', () => act('itemsTemplate', { type: setupType }));
   const pa = $('suPaste'); pa.oninput = () => store('kps.paste', pa.value);
   on('suPasteGo', async () => { const r = await act('itemsPaste', { text: pa.value }); if (r && r.ok) store('kps.paste'); });
-  on('suOne', () => { tab = 'boss'; bossTab = 'items'; itEdit = { name: '', unit: '', cat: '', buyUnit: '', per: 1, min: '', par: '', sup: '', price: '' }; render(); });
+  on('suOne', () => { ieAdv = false; tab = 'boss'; bossTab = 'items'; itEdit = { name: '', unit: '', cat: '', buyUnit: '', per: 1, min: '', par: '', sup: '', price: '' }; render(); });
   on('suSkip', () => { skipSetup = true; render(); });
+  on('suPick', () => { skipSetup = true; startItemsPick(); });
 }
 
 // ---------- นับของ (แบบ Food Market Hub: นับทีละหมวด · จำที่นับค้างไว้ · ส่งรวมทีเดียว) ----------
-let countCat = '';
+let countCat = '', catOpen = false, showSys = false;
 const countKey = () => 'kps.count:' + SHOP;
 function renderCount(app) {
   const items = S.items;
-  if (!items.length) { app.innerHTML = pendingShareCard() + emptyCard('search', 'ยังไม่มีของให้นับน้า~', 'ให้เจ้าของร้านใส่ของในร้านก่อน'); return; }
+  if (!items.length) {
+    app.innerHTML = pendingShareCard() + emptyCard('search', 'ยังไม่มีของให้นับน้า~', S.canAdd ? 'เพิ่มของที่ร้านมีได้เลย' : 'ให้เจ้าของร้านใส่ของในร้านก่อน') +
+      (S.canAdd ? '<button class="btn" id="cNew">＋ เพิ่มของ</button>' : '');
+    on('cNew', () => startNew('', {}, null));
+    return;
+  }
   const draft = load(countKey(), {});
   Object.keys(draft).forEach(id => { if (!itemById(id)) delete draft[id]; });
   const cats = groupsOf(items), gk = groupKey();
   if (cats.indexOf(countCat) < 0) countCat = cats[0];
   const done = Object.keys(draft).length;
-  const chip = c => { const all = items.filter(i => gk(i) === c), n = all.filter(i => i.id in draft).length;
-    return `<button data-cat="${esc(c)}" class="${countCat === c ? 'on' : ''}">${esc(c)} <i>${n}/${all.length}</i></button>`; };
-  const rows = items.filter(i => gk(i) === countCat).map(i => `<div class="citem">
+  const stat = c => { const all = items.filter(i => gk(i) === c); return { all: all.length, n: all.filter(i => i.id in draft).length }; };
+  const chip = c => { const t = stat(c); return `<button data-cat="${esc(c)}" class="${countCat === c ? 'on' : ''}">${esc(c)} <i>${t.n}/${t.all}</i></button>`; };
+  const selHtml = () => { const t = stat(countCat);
+    return `<button class="catsel" id="catSel" aria-expanded="${catOpen}"><span class="muted" style="font-size:17px">${S.countBy === 'ที่เก็บ' ? 'ที่เก็บ' : 'หมวด'}</span><b>${esc(countCat)}</b><i>${t.n}/${t.all}</i>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>${catOpen ? `<div class="chips" id="cChips">${cats.map(chip).join('')}</div>` : ''}`; };
+  const nextCat = cats[cats.indexOf(countCat) + 1];
+  const rows = items.filter(i => gk(i) === countCat).map(i => `<div class="citem">${thumb(i)}
       <div class="main"><div class="name">${esc(i.name)} ${i.low ? '<span class="pill warn">ใกล้หมด</span>' : ''}</div>
-        <div class="sub">นับเป็น ${esc(i.unit)}${S.me.boss && i.qty !== undefined && !i.fresh ? ` · ในระบบ ${qty(i.qty)}` : ''}</div></div>
+        <div class="sub">นับเป็น ${esc(i.unit)}${showSys && S.me.boss && i.qty !== undefined && !i.fresh ? ` · ในระบบ ${qty(i.qty)}` : ''}</div></div>
       <div class="step"><button data-dn="${esc(i.id)}" aria-label="ลด ${esc(i.name)}">−</button>
         <input inputmode="decimal" data-q="${esc(i.id)}" value="${esc(draft[i.id] === undefined ? '' : draft[i.id])}" class="${i.id in draft ? 'done' : ''}" aria-label="จำนวน ${esc(i.name)}" placeholder="–">
         <button data-up="${esc(i.id)}" aria-label="เพิ่ม ${esc(i.name)}">+</button></div></div>`).join('');
   app.innerHTML = pendingShareCard() + `
     ${S.lastCount ? `<div class="muted center" style="margin-bottom:8px">นับล่าสุด ${esc(S.lastCount.at)} โดย ${esc(S.lastCount.by)}</div>` : ''}
-    <div class="chips" id="cChips">${cats.map(chip).join('')}</div>
+    <div id="cSel">${selHtml()}</div>
     <div class="card clist" style="padding:4px 16px">${rows}</div>
-    <button class="btn" id="cGo" ${done && !busy.count ? '' : 'disabled'}>${busy.count ? '<span class="busy">กำลังส่ง</span>' : done ? `ส่งผลนับ ${done} รายการ` : 'ใส่จำนวนที่นับได้ก่อน'}<small>นับทีละหมวด แล้วส่งรวมทีเดียวได้ · ระบบจำที่นับค้างไว้ให้</small></button>
-    <div class="more center">${moreBtn('cnt', 'เพิ่มเติม')}</div>${moreBox('cnt', `<button class="btn quiet" id="cPrint" style="margin:0 0 10px">🖨️ พิมพ์ใบนับ<small>นับบนกระดาษ แล้วมากรอกทีหลัง</small></button>` +
+    ${nextCat ? `<button class="btn quiet" id="cNext" style="min-height:72px">หมวดถัดไป: ${esc(nextCat)} →</button>` : ''}
+    ${S.canAdd ? '<div class="center" style="margin:-4px 0 12px"><button class="small-btn ghost" id="cNew">＋ เจอของใหม่? เพิ่มเลย</button></div>' : ''}
+    <div class="stickygo"><button class="btn" id="cGo" ${done && !busy.count ? '' : 'disabled'}>${busy.count ? '<span class="busy">กำลังส่ง</span>' : done ? `ส่งผลนับ ${done} รายการ` : 'ใส่จำนวนที่นับได้ก่อน'}<small>นับแล้ว ${done}/${items.length} · ระบบจำที่นับค้างไว้ให้</small></button></div>
+    <div class="more center">${moreBtn('cnt', 'เพิ่มเติม')}</div>${moreBox('cnt', (S.me.boss ? `<button class="btn quiet" id="cSys" style="margin:0 0 10px">${showSys ? 'ซ่อน' : 'ดู'}ยอดในระบบ<small>เจ้าของ/ผู้จัดการ · พนักงานนับแบบไม่เห็นยอด</small></button>` : '') + `<button class="btn quiet" id="cPrint" style="margin:0 0 10px">🖨️ พิมพ์ใบนับ<small>นับบนกระดาษ แล้วมากรอกทีหลัง</small></button>` +
       (done ? `<button class="btn quiet${armed === 'clr' ? ' confirm' : ''}" id="cClr" style="margin:0">${armed === 'clr' ? 'แตะอีกครั้ง ล้างจริง' : 'ล้างที่นับค้างไว้'}</button>` : ''))}`;
   const save = () => {
     store(countKey(), draft);
     const n = Object.keys(draft).length, go = $('cGo');
     go.disabled = !n || busy.count;
-    go.innerHTML = (n ? `ส่งผลนับ ${n} รายการ` : 'ใส่จำนวนที่นับได้ก่อน') + '<small>นับทีละหมวด แล้วส่งรวมทีเดียวได้ · ระบบจำที่นับค้างไว้ให้</small>';
-    $('cChips').innerHTML = cats.map(chip).join('');
+    go.innerHTML = (n ? `ส่งผลนับ ${n} รายการ` : 'ใส่จำนวนที่นับได้ก่อน') + `<small>นับแล้ว ${n}/${items.length} · ระบบจำที่นับค้างไว้ให้</small>`;
+    $('cSel').innerHTML = selHtml();
     wireChips();
   };
   const setQ = (id, v, el) => {
@@ -639,7 +826,13 @@ function renderCount(app) {
     if (el) el.classList.toggle('done', id in draft);
     save();
   };
-  const wireChips = () => app.querySelectorAll('[data-cat]').forEach(b => b.onclick = () => { countCat = b.dataset.cat; renderCount(app); });
+  const wireChips = () => {
+    const sel = $('catSel');
+    if (sel) sel.onclick = () => { catOpen = !catOpen; $('cSel').innerHTML = selHtml(); wireChips(); };
+    app.querySelectorAll('[data-cat]').forEach(b => b.onclick = () => { countCat = b.dataset.cat; catOpen = false; renderCount(app); window.scrollTo(0, 0); });
+  };
+  on('cNext', () => { countCat = nextCat; catOpen = false; renderCount(app); window.scrollTo(0, 0); });
+  on('cSys', () => { showSys = !showSys; moreOpen = ''; renderCount(app); });
   wireChips();
   app.querySelectorAll('[data-q]').forEach(el => el.oninput = () => setQ(el.dataset.q, el.value, el));
   const bump = (id, d) => {
@@ -652,12 +845,13 @@ function renderCount(app) {
   app.querySelectorAll('[data-dn]').forEach(b => b.onclick = () => bump(b.dataset.dn, -1));
   on('cGo', async () => {
     const lines = Object.keys(draft).map(id => ({ id, qty: draft[id] }));
-    const r = await act('count', { lines });
+    const r = await act('count', { lines }, 'count', true);
     if (r && r.ok) store(countKey());
     rerender();
   });
   on('cClr', () => twoTap('clr', () => { store(countKey()); moreOpen = ''; render(); }));
   on('cPrint', printCountSheet);
+  on('cNew', () => startNew('', S.countBy === 'ที่เก็บ' ? { loc: countCat === 'ไม่ระบุที่เก็บ' ? '' : countCat } : { cat: countCat }, null));
 }
 /** จัดหน้านับตาม "หมวด" หรือ "ที่เก็บ" (เจ้าของตั้งได้) — FMH นับตามจุดเก็บของ */
 function groupKey() { return S.countBy === 'ที่เก็บ' ? i => i.loc || 'ไม่ระบุที่เก็บ' : i => i.cat; }
@@ -674,6 +868,35 @@ function printCountSheet() {
   window.print();
 }
 
+// ---------- รูปของ + เพิ่มของใหม่ (ทุกคนในร้าน เมื่อเจ้าของเปิดให้) ----------
+function thumb(i) { return i.photo ? `<img class="thumb" src="${esc(i.photo)}" alt="" loading="lazy">` : ''; }
+let nw = null;   // { name, unit, cat, loc, photo, done: ฟังก์ชันเมื่อเพิ่มเสร็จ (เช่น ใส่ลงใบรับของต่อ) }
+function startNew(name, pre, done) { nw = Object.assign({ name: name || '', unit: '', cat: '', loc: '', photo: '' }, pre || {}, { done }); render(); window.scrollTo(0, 0); }
+function renderNew(app) {
+  const f = nw;
+  app.innerHTML = `<div class="card"><div class="row" style="flex-wrap:nowrap"><h2 style="flex:1;margin:0">เพิ่มของใหม่</h2><button class="small-btn ghost" id="nwBack">ยกเลิก</button></div>
+      <div class="row" style="flex-wrap:nowrap;gap:14px;margin-top:12px">${f.photo ? `<img class="thumb big" src="${f.photo}" alt="รูปของใหม่">` : '<div class="thumb big" style="display:grid;place-items:center;font-size:40px">📷</div>'}
+        <div><label class="small-btn ghost" style="display:inline-flex;align-items:center;cursor:pointer">📷 ${f.photo ? 'เปลี่ยนรูป' : 'ถ่าย/เลือกรูป'}<input type="file" id="nwPhoto" accept="image/*" hidden></label>
+          <div class="muted" style="font-size:14px;margin-top:6px">ไม่ใส่รูปก็ได้</div></div></div>
+      <div class="field" style="margin-top:12px"><label for="nwName">ชื่อของ</label><input id="nwName" value="${esc(f.name)}" maxlength="40" placeholder="เช่น ไส้กรอกแฟรงก์"></div>
+      <div class="two"><div class="field"><label for="nwUnit">นับเป็น (หน่วย)</label><input id="nwUnit" list="nwUnits" value="${esc(f.unit)}" maxlength="12" placeholder="กก. ขวด แพ็ก"></div>
+        <div class="field"><label for="nwCat">หมวด <span class="muted" style="font-size:14px">(พิมพ์ใหม่ได้)</span></label><input id="nwCat" list="nwCats" value="${esc(f.cat)}" maxlength="20"></div></div>
+      <div class="field" style="margin:0"><label for="nwLoc">ที่เก็บ</label><input id="nwLoc" list="nwLocs" value="${esc(f.loc)}" maxlength="20" placeholder="เช่น ห้องเย็น"></div>
+      <datalist id="nwUnits">${S.units.map(u => `<option value="${esc(u)}">`).join('')}</datalist><datalist id="nwCats">${S.cats.map(u => `<option value="${esc(u)}">`).join('')}</datalist><datalist id="nwLocs">${S.locs.map(u => `<option value="${esc(u)}">`).join('')}</datalist>
+      ${S.me.boss ? '' : '<div class="note brand">ราคาและจุดเตือน เจ้าของ/ผู้จัดการตั้งต่อเอง</div>'}</div>
+    <button class="btn" id="nwGo" ${busy.itemAdd ? 'disabled' : ''}>${busy.itemAdd ? '<span class="busy">กำลังเพิ่ม</span>' : 'เพิ่มของ'}</button>`;
+  [['nwName', 'name'], ['nwUnit', 'unit'], ['nwCat', 'cat'], ['nwLoc', 'loc']].forEach(x => { const el = $(x[0]); el.oninput = () => { f[x[1]] = el.value; }; });
+  $('nwPhoto').onchange = async e => { const fl = e.target.files[0]; if (!fl) return;
+    try { f.photo = await shrinkImage(fl, 480); renderNew(app); } catch (err) { toast('อ่านรูปไม่ได้ ลองรูปอื่นน้า', 'bad'); } };
+  on('nwBack', () => { nw = null; render(); });
+  on('nwGo', async () => {
+    if (!f.name.trim()) return toast('ใส่ชื่อของก่อนน้า', 'bad');
+    if (!f.unit.trim()) return toast('ใส่หน่วยนับด้วยน้า เช่น กก. ขวด แพ็ก', 'bad');
+    const r = await act('itemAdd', { item: { name: f.name.trim(), unit: f.unit.trim(), cat: f.cat.trim(), loc: f.loc.trim(), photo: f.photo } });
+    if (r && r.ok) { const done = f.done; nw = null; const it = itemById(r.id); if (done && it) done(it); else render(); }
+  });
+}
+
 // ---------- ตัวเลือกของ (ค้นหา) ใช้ร่วม: รับของ · ทิ้งของ · สั่งของ · สูตร ----------
 function pickerHtml(id, ph) {
   return `<input id="${id}" placeholder="${esc(ph || 'พิมพ์ชื่อของ เช่น หมู')}" autocomplete="off" style="width:100%"><div class="results" id="${id}R"></div>`;
@@ -685,9 +908,12 @@ function wirePicker(id, onPick, skip) {
     const q = inp.value.trim();
     if (!q) { out.innerHTML = ''; return; }
     const list = S.items.filter(i => match(i, q) && !(skip && skip(i))).slice(0, 8);
-    out.innerHTML = list.length ? list.map(i => `<button data-pk="${esc(i.id)}"><span>${esc(i.name)}</span><small>${esc(i.cat)} · ${esc(i.unit)}</small></button>`).join('')
-                                : '<div class="muted" style="padding:8px 4px">ไม่เจอ ลองพิมพ์คำอื่นน้า</div>';
+    const exact = S.items.some(i => i.name === q);
+    out.innerHTML = (list.length ? list.map(i => `<button data-pk="${esc(i.id)}">${i.photo ? `<img class="thumb" src="${esc(i.photo)}" alt="" style="width:40px;height:40px;border-radius:10px" loading="lazy">` : ''}<span>${esc(i.name)}</span><small>${esc(i.cat)} · ${esc(i.unit)}</small></button>`).join('')
+                                  : '<div class="muted" style="padding:8px 4px">ไม่เจอในร้าน</div>') +
+      (S.canAdd && !exact ? `<button data-pknew="1"><span>＋ เพิ่ม "${esc(q)}" เป็นของใหม่</span><small>ใส่รูปได้</small></button>` : '');
     out.querySelectorAll('[data-pk]').forEach(b => b.onclick = () => { inp.value = ''; out.innerHTML = ''; onPick(itemById(b.dataset.pk)); });
+    out.querySelectorAll('[data-pknew]').forEach(b => b.onclick = () => { const name = q; inp.value = ''; out.innerHTML = ''; startNew(name, {}, onPick); });
   };
   inp.oninput = draw;
 }
@@ -708,6 +934,7 @@ function renderRecv(app) {
     return;
   }
   const seeP = S.me.seePrice;
+  const billOpen = !!(rcv.billOpen || rcv.bill || rcv.total || rcv.photo);   // บิลซ่อนไว้ ใส่เมื่อมีบิลเท่านั้น
   const lines = rcv.lines.map((l, k) => {
     const i = itemById(l.id);
     if (!i) return '';
@@ -724,18 +951,21 @@ function renderRecv(app) {
           ${S.sups.map(s => `<option value="${esc(s.id)}" ${rcv.sup === s.id ? 'selected' : ''}>${esc(s.name)}</option>`).join('')}</select></div>`}</div>
     ${lines}
     ${rcv.order ? '' : `<div class="card"><h2>＋ เพิ่มของที่ได้รับ</h2>${pickerHtml('rPick')}</div>`}
-    <div class="card"><h2>🧾 บิลจากร้านค้า <span class="muted" style="font-size:15px">(ไม่ใส่ก็ได้)</span></h2>
+    ${billOpen ? '' : `<button class="btn quiet" id="rBillOpen" style="min-height:64px;font-size:20px;margin-bottom:12px">🧾 ใส่บิลจากร้านค้า<small>เลขบิล · ยอดบิล · รูปบิล (ไม่ใส่ก็ได้)</small></button>`}
+    ${billOpen ? `<div class="card"><h2>🧾 บิลจากร้านค้า <span class="muted" style="font-size:15px">(ไม่ใส่ก็ได้)</span></h2>
       <div class="two"><div class="field"><label for="rBill">เลขที่บิล</label><input id="rBill" value="${esc(rcv.bill || '')}" maxlength="30"></div>
       ${seeP ? `<div class="field"><label for="rTotal">ยอดตามบิล (บาท)</label><input id="rTotal" inputmode="decimal" value="${esc(rcv.total || '')}"></div>` : ''}</div>
       <label class="small-btn ghost" style="display:inline-flex;align-items:center;cursor:pointer">📷 ${rcv.photo ? 'ถ่ายใหม่' : 'ถ่ายรูปบิล'}<input type="file" id="rPhoto" accept="image/*" capture="environment" hidden></label>
       ${rcv.photo ? `<img class="photo" src="${rcv.photo}" alt="รูปบิล">` : ''}
-      ${seeP ? '<div class="muted" style="font-size:15px;margin-top:8px">ยอดบิลไม่ตรงกับระบบ น้องพร้อมจะเตือน · บิลไปรอจ่ายที่ จัดการ → บิล</div>' : ''}</div>
-    <button class="btn" id="rGo" ${rcv.lines.length && !busy.receive ? '' : 'disabled'}>${busy.receive ? '<span class="busy">กำลังบันทึก</span>' : `รับเข้า ${rcv.lines.length} รายการ`}<small>${seeP ? 'ราคาที่ใส่ = ต้นทุนใหม่ของของชิ้นนั้น' : 'บันทึกจำนวนที่ได้จริง'}</small></button>`;
+      ${seeP ? '<div class="muted" style="font-size:15px;margin-top:8px">ยอดบิลไม่ตรงกับระบบ น้องพร้อมจะเตือน · บิลไปรอจ่ายที่ จัดการ → บิล</div>' : ''}</div>` : ''}
+    <div class="stickygo"><button class="btn" id="rGo" ${rcv.lines.length && !busy.receive ? '' : 'disabled'}>${busy.receive ? '<span class="busy">กำลังบันทึก</span>' : `รับเข้า ${rcv.lines.length} รายการ`}<small>${seeP ? 'ราคาที่ใส่ = ต้นทุนใหม่ของของชิ้นนั้น' : 'บันทึกจำนวนที่ได้จริง'}</small></button></div>`;
   on('rBack', () => { rcv = null; renderRecv(app); });
+  on('rBillOpen', () => { rcv.billOpen = true; renderRecv(app); const b = $('rBill'); if (b) b.focus(); });
   const sup = $('rSup'); if (sup) sup.onchange = () => { rcv.sup = sup.value; };
-  $('rBill').oninput = () => { rcv.bill = $('rBill').value; };
+  const bl = $('rBill'); if (bl) bl.oninput = () => { rcv.bill = bl.value; };
   const tot = $('rTotal'); if (tot) tot.oninput = () => { rcv.total = tot.value; };
-  $('rPhoto').onchange = async e => {
+  const ph = $('rPhoto');
+  if (ph) ph.onchange = async e => {
     const f = e.target.files && e.target.files[0];
     if (!f) return;
     try { rcv.photo = await shrinkImage(f); renderRecv(app); } catch (err) { toast('อ่านรูปไม่ได้ ลองถ่ายใหม่น้า', 'bad'); }
@@ -754,7 +984,7 @@ function renderRecv(app) {
     const t = num(rcv.total);
     if (isNaN(t) || t < 0) return toast('ยอดตามบิลไม่ถูกต้อง', 'bad');
     const r = await act('receive', { order: rcv.order, sup: rcv.sup, lines: rcv.lines.map(l => ({ id: l.id, qty: num(l.qty), price: num(l.price) })),
-                                     invoice: { no: rcv.bill || '', total: t, photo: rcv.photo || '' } });
+                                     invoice: { no: rcv.bill || '', total: t, photo: rcv.photo || '' } }, 'receive', true);
     if (r && r.ok) rcv = null;
     rerender();
   });
@@ -794,7 +1024,7 @@ function renderWaste(app) {
   on('wGo', async () => {
     const n = num(wst.qty);
     if (n === '' || isNaN(n) || n <= 0) return toast('ใส่จำนวนที่ทิ้งก่อนน้า', 'bad');
-    const r = await act('waste', { id: wst.id, qty: n, reason: wst.reason });
+    const r = await act('waste', { id: wst.id, qty: n, reason: wst.reason }, 'waste', true);
     if (r && r.ok) wst = null;
     rerender();
   });
@@ -804,8 +1034,10 @@ function renderWaste(app) {
 let od = null;   // { no (แก้ใบเดิม), sup, note, lines:[{id, qty}] }
 const ST_PILL = { 'รออนุมัติ': 'warn', 'อนุมัติ': 'brand', 'ส่งแล้ว': 'ok', 'รับแล้ว': 'ok' };
 function supplierText(o) {
+  const info = S.shopInfo || {};
   return `🧾 ใบสั่งซื้อ ${o.no}\nจาก ${S.shop.name}\n` + o.lines.map(l => `• ${l.name} ${qty(l.qty)} ${l.unit}`).join('\n') +
-         (o.note ? `\nหมายเหตุ: ${o.note}` : '') + '\nรบกวนส่งตามรายการนี้ด้วยนะ ขอบคุณมาก 🙏';
+         (o.note ? `\nหมายเหตุ: ${o.note}` : '') + (info.address ? `\nส่งที่: ${info.address}` : '') + (info.phone ? `\nโทร: ${info.phone}` : '') +
+         '\nรบกวนส่งตามรายการนี้ด้วยนะ ขอบคุณมาก 🙏';
 }
 function renderOrder(app) {
   if (od) return renderOrderEdit(app);
@@ -897,7 +1129,7 @@ function renderOrderEdit(app) {
   app.innerHTML = `<div class="card"><div class="row" style="flex-wrap:nowrap"><h2 style="flex:1;margin:0">${od.no ? 'แก้ใบสั่ง ' + esc(od.no) : ask ? 'ขอของ' : 'ทำใบสั่ง'}</h2>
       <button class="small-btn ghost" id="eBack">ยกเลิก</button></div>
       <div class="field" style="margin:10px 0 0"><label for="eSup">สั่งจากร้านค้า</label><select id="eSup"><option value="">— ยังไม่ระบุ —</option>
-        ${S.sups.map(s => `<option value="${esc(s.id)}" ${od.sup === s.id ? 'selected' : ''}>${esc(s.name)}${s.days ? ' · ' + esc(s.days) : ''}</option>`).join('')}</select></div></div>
+        ${S.sups.map(s => `<option value="${esc(s.id)}" ${od.sup === s.id ? 'selected' : ''}>${esc(s.name)}${s.days ? ' · ' + esc(s.days) : ''}${s.cutoff ? ' · สั่งก่อน ' + esc(s.cutoff) : ''}</option>`).join('')}</select></div></div>
     ${lines || '<div class="muted center" style="margin-bottom:12px">ยังไม่มีของในใบนี้ ค้นหาด้านล่างเพื่อเพิ่ม</div>'}
     <div class="card"><h2>＋ เพิ่มของ</h2>${pickerHtml('ePick')}</div>
     ${od.no ? '' : `<div class="field"><label for="eNote">หมายเหตุถึงร้านค้า (ไม่ใส่ก็ได้)</label><input id="eNote" value="${esc(od.note)}" maxlength="80" placeholder="เช่น ส่งก่อน 10 โมงนะ"></div>`}
@@ -912,14 +1144,15 @@ function renderOrderEdit(app) {
   on('eGo', async () => {
     for (const l of od.lines) { const q = num(l.qty); if (q === '' || isNaN(q) || q <= 0) return toast('ใส่จำนวนที่จะสั่งของ ' + itemById(l.id).name + ' ก่อนน้า', 'bad'); }
     const lines = od.lines.map(l => ({ id: l.id, qty: num(l.qty) }));
-    const r = od.no ? await act('orderSet', { no: od.no, op: 'edit', sup: od.sup, lines }, 'order')
-                    : await act('orderCreate', { sup: od.sup, note: od.note, lines }, 'order');
+    const r = od.no ? await act('orderSet', { no: od.no, op: 'edit', sup: od.sup, lines }, 'order', true)
+                    : await act('orderCreate', { sup: od.sup, note: od.note, lines }, 'order', true);
     if (r && r.ok) od = null;
     rerender();
   });
 }
 
 // ---------- จัดการ (เจ้าของ/ผู้จัดการ): สรุป · ต้นทุนเมนู · ของในร้าน · ร้านค้า · ทีมงาน · ตั้งค่า ----------
+let ieAdv = false;
 let bossCache = {}, sumDays = 7, itEdit = null, itQ = '', supEdit = null, rcEdit = null, itDetail = null;
 let repRng = { from: '', to: '' }, histRng = { from: '', to: '' }, histType = '', salesDate = '', salesDraft = null, billsUnpaid = true;
 const dayTH = (d) => new Date((d ? new Date(d) : new Date()).getTime() + 7 * 3600000).toISOString().slice(0, 10);
@@ -939,10 +1172,23 @@ async function loadBoss() {
   if (r && r.ok && k === 'sales') salesDraft = salesFrom(r);
   if (tab === 'boss' && bossTab === k && !editing()) render();
 }
+const BOSS_MAIN = [['sum', 'สรุป', 'ของใกล้หมด · มูลค่าของ'], ['items', 'ของในร้าน', 'เพิ่ม แก้ รูป ราคา'], ['bills', 'บิล', 'ค้างจ่าย · รูปบิล'],
+                   ['report', 'รายงาน', 'ต้นทุนอาหาร % · ซื้อ-ใช้'], ['sups', 'ร้านค้า', 'เบอร์ · เครดิต · วันส่ง'], ['team', 'ทีมงาน', 'เพิ่มคน · ลิงก์ร้าน']];
+const BOSS_MORE = [['cost', 'ต้นทุนเมนู'], ['sales', 'ยอดขาย'], ['hist', 'ประวัติ'], ['branch', 'สาขา']];
+const BICON = { sum: 'M4 20V10M10 20V4M16 20v-8M2 20.5h20', items: ICON.recv, bills: 'M6 3h12v18l-3-2-3 2-3-2-3 2zM9 8h6M9 12h6',
+                report: 'M3 20.5h18M5.5 16l4.5-5.5 3 3L18.5 6.5', sups: 'M2 6h11v9H2zM13 9h4l3 3v3h-7M6.5 18.5a1.5 1.5 0 1 0 .1 0M16.5 18.5a1.5 1.5 0 1 0 .1 0', team: ICON.boss };
+function bossTitle(k) { const all = BOSS_MAIN.concat(BOSS_MORE, [['set', 'ตั้งค่า']]).filter(x => x[0] === k)[0]; return all ? all[1] : ''; }
 function renderBoss(app) {
-  const subs = [['sum', 'สรุป'], ['report', 'รายงาน'], ['cost', 'ต้นทุนเมนู'], ['sales', 'ยอดขาย'], ['items', 'ของในร้าน'], ['sups', 'ร้านค้า'],
-                ['bills', 'บิล'], ['hist', 'ประวัติ'], ['branch', 'สาขา'], ['team', 'ทีมงาน']];
-  if (S.me.owner) subs.push(['set', 'ตั้งค่า']);
+  const more = BOSS_MORE.slice();
+  if (S.me.owner) more.push(['set', 'ตั้งค่า']);
+  if (!bossTab) {
+    // ศูนย์รวมของเจ้าของ: 6 ปุ่มที่ใช้บ่อย + "เพิ่มเติม" ซ่อนที่เหลือ
+    app.innerHTML = `<div class="bhub"><div class="tiles">${BOSS_MAIN.map(t => `<button class="tile" data-bs="${t[0]}"><span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="${BICON[t[0]]}"/></svg></span><b>${t[1]}</b><small>${t[2]}</small></button>`).join('')}</div>
+      <div class="more center">${moreBtn('bossx', 'เพิ่มเติม')}</div>${moreBox('bossx', more.map(x => `<button class="btn quiet" data-bs="${x[0]}" style="margin:0 0 10px">${x[1]}</button>`).join(''))}</div>`;
+    app.querySelectorAll('[data-bs]').forEach(b => b.onclick = () => { bossTab = b.dataset.bs; itEdit = supEdit = rcEdit = itPick = null; moreOpen = ''; armed = ''; render(); loadBoss(); window.scrollTo(0, 0); });
+    return;
+  }
+  const subs = BOSS_MAIN.map(x => [x[0], x[1]]).concat(more);
   let body;
   if (bossTab === 'sum') body = bossSumHtml();
   else if (bossTab === 'cost') body = bossCostHtml();
@@ -955,9 +1201,10 @@ function renderBoss(app) {
   else if (bossTab === 'hist') body = bossHistHtml();
   else if (bossTab === 'branch') body = bossBranchHtml();
   else body = bossSetHtml();
-  app.innerHTML = `<div class="grid3 boss">${subs.map(s => `<button data-bs="${s[0]}" class="${bossTab === s[0] ? 'on' : ''}">${s[1]}</button>`).join('')}</div>` + body;
+  // จอกว้างมีแถบสลับหน้าบนสุด · มือถือใช้ปุ่ม "‹ จัดการ" ด้านบนแทน
+  app.innerHTML = `<div class="grid3 boss bstrip">${subs.map(s => `<button data-bs="${s[0]}" class="${bossTab === s[0] ? 'on' : ''}">${s[1]}</button>`).join('')}</div>` + body;
   app.querySelectorAll('[data-bs]').forEach(b => b.onclick = () => {
-    bossTab = b.dataset.bs; itEdit = supEdit = rcEdit = null; moreOpen = ''; armed = ''; render(); loadBoss();
+    bossTab = b.dataset.bs; itEdit = supEdit = rcEdit = itPick = null; moreOpen = ''; armed = ''; render(); loadBoss();
   });
   wireBoss(app);
 }
@@ -1017,10 +1264,12 @@ function recipeEditHtml() {
     ${rcEdit.old ? `<button class="btn quiet${armed === 'rcDel' ? ' confirm' : ''}" id="rcDel">${armed === 'rcDel' ? 'แตะอีกครั้ง ลบเมนู' : 'ลบเมนูนี้'}</button>` : ''}`;
 }
 function bossItemsHtml() {
+  if (itPick) return itemsPickHtml();
   if (itEdit) return itemEditHtml();
   const list = S.items.filter(i => match(i, itQ));
   const noMin = S.items.filter(i => !i.min).length;
-  return `<button class="btn" id="itNew">＋ เพิ่มของ</button>
+  return `<div class="row" style="flex-wrap:nowrap;gap:10px"><button class="btn" id="itNew" style="flex:1">＋ เพิ่มของ</button>
+      <button class="btn quiet" id="itPick" style="flex:1;min-height:88px">เลือกจากคลัง<small>เพิ่ม/ลบหลายอย่าง</small></button></div>
     <div class="more center">${moreBtn('itx', 'วางทีเดียว · รายการตั้งต้น')}</div>
     ${moreBox('itx', `<div class="card"><h2>วางรายการทีเดียว</h2><div class="muted">บรรทัดละอย่าง: <b>ชื่อ หน่วย จุดเตือน หมวด</b></div>
         <textarea id="itPaste" placeholder="หมูสับ กก. 3 เนื้อสัตว์&#10;น้ำปลา ขวด 2 เครื่องปรุง">${esc(load('kps.paste', ''))}</textarea>
@@ -1033,7 +1282,7 @@ function bossItemsHtml() {
     <div class="card" style="padding:4px 16px"><div class="list" id="itList">${itemsListHtml(list)}</div></div>`;
 }
 function itemsListHtml(list) {
-  return list.length ? list.map(i => `<button class="item" data-it="${esc(i.id)}"><div class="main"><div class="name">${esc(i.name)} ${i.low ? '<span class="pill warn">ใกล้หมด</span>' : ''}</div>
+  return list.length ? list.map(i => `<button class="item" data-it="${esc(i.id)}">${thumb(i)}<div class="main"><div class="name">${esc(i.name)} ${i.low ? '<span class="pill warn">ใกล้หมด</span>' : ''}</div>
     <div class="sub">${esc(i.cat)} · ${esc(i.unit)} · ${i.min ? 'เตือนที่ ' + qty(i.min) : '<span style="color:var(--warn)">ยังไม่ตั้งจุดเตือน</span>'}${(supById(i.sup) || {}).name ? ' · ' + esc(supById(i.sup).name) : ''}</div></div>
     <div class="amt">${i.qty !== undefined && !i.fresh ? qty(i.qty) : '–'}<small>${S.me.seePrice && i.price ? baht(i.price * i.per) + ' บ./' + esc(i.buyUnit) : 'เหลือ'}</small></div></button>`).join('')
     : `<div class="muted center" style="padding:14px 0">${nong('empty')}</div>`;
@@ -1042,17 +1291,23 @@ function itemEditHtml() {
   const f = itEdit, d = itDetail && itDetail.id === f.id ? itDetail : null;
   const cats = S.cats, units = S.units;
   return `<div class="card"><div class="row" style="flex-wrap:nowrap"><h2 style="flex:1;margin:0">${f.id ? 'แก้ ' + esc(f.name) : 'เพิ่มของ'}</h2><button class="small-btn ghost" id="ieBack">กลับ</button></div>
+      ${f.id ? `<div class="row" style="flex-wrap:nowrap;gap:14px;margin-top:10px">${(itemById(f.id) || {}).photo ? `<img class="thumb big" src="${esc((itemById(f.id) || {}).photo)}" alt="รูป ${esc(f.name)}">` : `<div class="thumb big" style="display:grid;place-items:center;font-size:40px">📷</div>`}
+        <div style="min-width:0"><label class="small-btn ghost" style="display:inline-flex;align-items:center;cursor:pointer">${busy.itemPhoto ? '<span class="busy">กำลังใส่รูป</span>' : (itemById(f.id) || {}).photo ? '📷 เปลี่ยนรูป' : '📷 ใส่รูป'}<input type="file" id="iePhoto" accept="image/*" hidden></label>
+          ${(itemById(f.id) || {}).photo ? `<div style="margin-top:8px"><button class="small-btn red${armed === 'iePhX' ? ' confirm' : ''}" id="iePhX">${armed === 'iePhX' ? 'แตะอีกครั้ง' : 'ลบรูป'}</button></div>` : ''}
+          <div class="muted" style="font-size:14px;margin-top:6px">รูปช่วยให้พนักงานนับถูกชิ้น</div></div></div>` : ''}
       <div class="field" style="margin-top:10px"><label for="ieName">ชื่อของ</label><input id="ieName" value="${esc(f.name)}" maxlength="40" placeholder="เช่น หมูสับ"></div>
       <div class="two"><div class="field"><label for="ieCat">หมวด</label><input id="ieCat" list="catList" value="${esc(f.cat)}" maxlength="20"></div>
         <div class="field"><label for="ieUnit">นับเป็น (หน่วย)</label><input id="ieUnit" list="unitList" value="${esc(f.unit)}" maxlength="12" placeholder="กก."></div></div>
+      <div class="field"><label for="ieMin">เตือนเมื่อเหลือ <span class="muted" style="font-size:14px">(ต่ำกว่านี้ = ใกล้หมด)</span></label><input id="ieMin" inputmode="decimal" value="${esc(f.min)}" placeholder="0 = ไม่เตือน"></div>
+      <button class="btn quiet" id="ieAdvBtn" style="min-height:60px;font-size:19px;margin-bottom:12px" aria-expanded="${ieAdv}">${ieAdv ? 'ซ่อน' : 'ตั้งค่าเพิ่มเติม'}<small>ที่เก็บ · ควรมีเต็มที่ · ร้านค้า · หน่วยซื้อ${S.me.seePrice ? ' · ราคา' : ''}</small></button>
+      <div id="ieAdv" ${ieAdv ? '' : 'hidden'}>
       <div class="field"><label for="ieLoc">ที่เก็บ <span class="muted" style="font-size:14px">(จัดหน้านับของตามจุดเก็บได้)</span></label><input id="ieLoc" list="locList" value="${esc(f.loc || '')}" maxlength="20" placeholder="เช่น ห้องเย็น"></div>
-      <div class="two"><div class="field"><label for="ieMin">เตือนเมื่อเหลือ</label><input id="ieMin" inputmode="decimal" value="${esc(f.min)}" placeholder="0 = ไม่เตือน"></div>
-        <div class="field"><label for="iePar">ควรมีเต็มที่</label><input id="iePar" inputmode="decimal" value="${esc(f.par)}" placeholder="ไม่ใส่ก็ได้"></div></div>
-      <div class="muted" style="font-size:15px;margin:-4px 0 12px">ของต่ำกว่า "เตือนเมื่อเหลือ" = ใกล้หมด · ระบบแนะนำให้สั่งจนถึง "ควรมีเต็มที่"</div>
+      <div class="field"><label for="iePar">ควรมีเต็มที่ <span class="muted" style="font-size:14px">(ระบบแนะนำให้สั่งจนถึงตัวเลขนี้)</span></label><input id="iePar" inputmode="decimal" value="${esc(f.par)}" placeholder="ไม่ใส่ก็ได้"></div>
       <div class="field"><label for="ieSup">ร้านค้าหลัก</label><select id="ieSup"><option value="">— ไม่ระบุ —</option>${S.sups.map(s => `<option value="${esc(s.id)}" ${f.sup === s.id ? 'selected' : ''}>${esc(s.name)}</option>`).join('')}</select></div>
       <div class="two"><div class="field"><label for="ieBuy">ซื้อเป็น (หน่วยซื้อ)</label><input id="ieBuy" list="unitList" value="${esc(f.buyUnit)}" maxlength="12" placeholder="เหมือนหน่วยนับ"></div>
         <div class="field"><label for="iePer">1 หน่วยซื้อ = กี่หน่วยนับ</label><input id="iePer" inputmode="decimal" value="${esc(f.per)}"></div></div>
       ${S.me.seePrice ? `<div class="field"><label for="iePrice">ราคาต่อหน่วยซื้อ (บาท)</label><input id="iePrice" inputmode="decimal" value="${esc(f.price)}" placeholder="รับของทีหลังระบบอัปเดตให้เอง"></div>` : ''}
+      </div>
       <datalist id="catList">${cats.map(c => `<option value="${esc(c)}">`).join('')}</datalist><datalist id="unitList">${units.map(u => `<option value="${esc(u)}">`).join('')}</datalist><datalist id="locList">${S.locs.map(u => `<option value="${esc(u)}">`).join('')}</datalist></div>
     <button class="btn" id="ieGo" ${busy.itemSave ? 'disabled' : ''}>${busy.itemSave ? '<span class="busy">กำลังบันทึก</span>' : 'บันทึก'}</button>
     ${f.id ? prepEditHtml(f) : ''}
@@ -1066,14 +1321,18 @@ function bossSupsHtml() {
     return `<div class="card"><div class="row" style="flex-wrap:nowrap"><h2 style="flex:1;margin:0">${f.id ? 'แก้ร้านค้า' : 'เพิ่มร้านค้า'}</h2><button class="small-btn ghost" id="seBack">กลับ</button></div>
         <div class="field" style="margin-top:10px"><label for="seName">ชื่อร้านค้า</label><input id="seName" value="${esc(f.name)}" maxlength="40" placeholder="เช่น ตลาดสด · ร้านผักป้าแอน"></div>
         <div class="field"><label for="sePhone">เบอร์โทร</label><input id="sePhone" inputmode="tel" value="${esc(f.phone)}" maxlength="20"></div>
+        <div class="field"><label for="seContact">ชื่อผู้ติดต่อ</label><input id="seContact" value="${esc(f.contact || '')}" maxlength="30" placeholder="เช่น พี่บอย"></div>
         <div class="field"><label for="seDays">มาส่งวันไหน</label><input id="seDays" value="${esc(f.days)}" maxlength="40" placeholder="เช่น จ. พ. ศ. · ทุกวัน"></div>
+        <div class="two"><div class="field"><label for="seCut">ต้องสั่งก่อน (เวลา)</label><input id="seCut" type="time" value="${esc(f.cutoff || '')}"></div>
+          <div class="field"><label for="seCredit">เครดิต (วัน)</label><input id="seCredit" inputmode="numeric" value="${esc(f.credit || '')}" placeholder="0 = เงินสด"></div></div>
+        ${S.me.seePrice ? `<div class="field"><label for="seMin">ยอดสั่งขั้นต่ำ (บาท)</label><input id="seMin" inputmode="decimal" value="${esc(f.minOrder || '')}" placeholder="ไม่มีก็เว้นว่าง"></div>` : ''}
         <div class="field" style="margin:0"><label for="seNote">หมายเหตุ</label><input id="seNote" value="${esc(f.note)}" maxlength="80" placeholder="เช่น สั่งก่อน 4 โมงเย็น"></div></div>
       <button class="btn" id="seGo" ${busy.supSave ? 'disabled' : ''}>บันทึก</button>
       ${f.id ? `<div class="more center">${moreBtn('se', 'เพิ่มเติม')}</div>${moreBox('se', `<button class="btn quiet${armed === 'seOff' ? ' confirm' : ''}" id="seOff" style="margin:0">${armed === 'seOff' ? 'แตะอีกครั้ง เลิกใช้' : 'เลิกใช้ร้านค้านี้'}</button>`)}` : ''}`;
   }
   return `<button class="btn" id="seNew">＋ เพิ่มร้านค้า</button>
     <div class="card"><h2>🚚 ร้านค้าที่ซื้อของ</h2>${S.sups.length ? `<div class="list">${S.sups.map(s => `<button class="item" data-se="${esc(s.id)}"><div class="main"><div class="name">${esc(s.name)}</div>
-      <div class="sub">${esc([s.days, s.phone].filter(String).join(' · ') || 'แตะเพื่อใส่เบอร์ · วันส่งของ')}</div></div>
+      <div class="sub">${esc([s.contact, s.days, s.cutoff ? 'สั่งก่อน ' + s.cutoff : '', s.phone, s.credit !== '' && s.credit !== undefined ? (+s.credit ? 'เครดิต ' + s.credit + ' วัน' : 'เงินสด') : ''].filter(String).join(' · ') || 'แตะเพื่อใส่เบอร์ · วันส่งของ')}</div></div>
       <div class="amt">${S.items.filter(i => i.sup === s.id).length}<small>อย่าง</small></div></button>`).join('')}</div>` : `<div class="muted">${nong('empty')} เพิ่มร้านค้าไว้ จะรวมใบสั่งตามร้านให้เอง</div>`}</div>`;
 }
 function bossTeamHtml() {
@@ -1105,7 +1364,9 @@ function bossSetHtml() {
       <div class="tg"><span>ใครเห็นตัวเลขเงิน<small>${s['เห็นราคา'] === 'เจ้าของ' ? 'เจ้าของคนเดียว' : 'เจ้าของ + ผู้จัดการ'} · พนักงานไม่เห็นเสมอ</small></span>
         <select id="stPrice" style="width:150px"><option value="ผู้จัดการ" ${s['เห็นราคา'] !== 'เจ้าของ' ? 'selected' : ''}>เจ้าของ+ผจก.</option><option value="เจ้าของ" ${s['เห็นราคา'] === 'เจ้าของ' ? 'selected' : ''}>เจ้าของคนเดียว</option></select></div>
       <div class="tg"><span>พนักงานขอของ ต้องรออนุมัติ<small>ปิด = พนักงานทำใบสั่งได้เลย</small></span>
-        <input type="checkbox" class="sw" id="stApprove" ${s['ต้องอนุมัติใบสั่ง'] !== 'ไม่' ? 'checked' : ''} aria-label="ต้องอนุมัติใบสั่ง"></div></div>
+        <input type="checkbox" class="sw" id="stApprove" ${s['ต้องอนุมัติใบสั่ง'] !== 'ไม่' ? 'checked' : ''} aria-label="ต้องอนุมัติใบสั่ง"></div>
+      <div class="tg"><span>พนักงาน/แคชเชียร์ เพิ่มของใหม่ได้<small>ใส่ชื่อ หน่วย หมวด รูป · ราคา/จุดเตือนเจ้าของตั้งเอง</small></span>
+        <input type="checkbox" class="sw" id="stStaffAdd" ${s['พนักงานเพิ่มของได้'] === 'ใช่' ? 'checked' : ''} aria-label="พนักงานเพิ่มของใหม่ได้"></div></div>
     <div class="card"><div class="field"><label for="stTarget">เป้าต้นทุนอาหาร (%)</label>
       <div class="row" style="flex-wrap:nowrap"><input id="stTarget" inputmode="decimal" value="${esc(s['เป้าต้นทุนอาหาร'])}" placeholder="เช่น 35" style="flex:1"><button class="small-btn" data-ss="เป้าต้นทุนอาหาร" data-in="stTarget">บันทึก</button></div></div>
       <div class="field"><label for="stCats">หมวดของ (คั่นด้วย ,)</label><textarea id="stCats" style="min-height:90px">${esc(s['หมวด'])}</textarea>
@@ -1119,6 +1380,9 @@ function bossSetHtml() {
         <button class="small-btn" data-ss="ที่เก็บ" data-in="stLocs" style="margin-top:8px">บันทึกที่เก็บ</button></div>
       <div class="field" style="margin:0"><label for="stReasons">เหตุผลทิ้งของ (คั่นด้วย ,)</label><input id="stReasons" value="${esc(s['เหตุผลทิ้งของ'])}">
         <button class="small-btn" data-ss="เหตุผลทิ้งของ" data-in="stReasons" style="margin-top:8px">บันทึกเหตุผล</button></div></div>
+    <div class="card"><h2>🏠 ข้อมูลร้าน <span class="muted" style="font-size:15px">(ใส่ในใบสั่งซื้อ)</span></h2>
+      ${[['เบอร์ร้าน', 'stPhone', 'tel', 'เช่น 0812345678'], ['ที่อยู่ส่งของ', 'stAddr', 'text', 'ที่อยู่ให้ร้านค้ามาส่ง'], ['ชื่อบริษัท', 'stCo', 'text', 'ไม่มีก็เว้นว่าง'], ['เลขผู้เสียภาษี', 'stTax', 'numeric', 'ไม่มีก็เว้นว่าง']].map((x, k) =>
+        `<div class="field"${k === 3 ? ' style="margin:0"' : ''}><label for="${x[1]}">${x[0]}</label><div class="row" style="flex-wrap:nowrap"><input id="${x[1]}" inputmode="${x[2]}" value="${esc(s[x[0]] || '')}" maxlength="${k === 1 ? 200 : 60}" placeholder="${x[3]}" style="flex:1;min-width:0"><button class="small-btn" data-ss="${x[0]}" data-in="${x[1]}">บันทึก</button></div></div>`).join('')}</div>
     <div class="card"><h2>🔑 รหัสลงทะเบียนของร้าน</h2><div class="row" style="flex-wrap:nowrap"><input id="stCode" inputmode="numeric" placeholder="รหัสใหม่ 4–8 หลัก" style="flex:1;min-width:0"><button class="small-btn" id="stCodeGo">เปลี่ยน</button></div>
       <div class="muted" style="font-size:15px;margin-top:6px">คนที่ลงทะเบียนแล้วใช้ต่อได้ ไม่ต้องทำใหม่</div></div>`;
 }
@@ -1150,12 +1414,17 @@ function wireBoss(app) {
   const q = $('itQ');
   if (q) q.oninput = () => { itQ = q.value; $('itList').innerHTML = itemsListHtml(S.items.filter(i => match(i, itQ))); wireItemRows(app); };
   wireItemRows(app);
-  on('itNew', () => { itEdit = { name: '', unit: '', cat: '', buyUnit: '', per: 1, min: '', par: '', sup: '', price: '' }; render(); window.scrollTo(0, 0); });
+  on('itNew', () => { ieAdv = false; itEdit = { name: '', unit: '', cat: '', buyUnit: '', per: 1, min: '', par: '', sup: '', price: '' }; render(); window.scrollTo(0, 0); });
   const pa = $('itPaste'); if (pa) pa.oninput = () => store('kps.paste', pa.value);
   on('itPasteGo', async () => { const r = await act('itemsPaste', { text: val('itPaste') }); if (r && r.ok) store('kps.paste'); });
   app.querySelectorAll('[data-tp]').forEach(b => b.onclick = () => act('itemsTemplate', { type: b.dataset.tp }));
   if (itEdit) {
     on('ieBack', () => { itEdit = null; render(); });
+    on('ieAdvBtn', () => {
+      Object.assign(itEdit, { name: val('ieName'), cat: val('ieCat'), unit: val('ieUnit'), loc: val('ieLoc'), min: val('ieMin'), par: val('iePar'), sup: val('ieSup'), buyUnit: val('ieBuy'), per: val('iePer') });
+      if ($('iePrice')) itEdit.price = val('iePrice');
+      ieAdv = !ieAdv; render();
+    });
     on('ieGo', async () => {
       const f = { id: itEdit.id, name: val('ieName'), cat: val('ieCat'), unit: val('ieUnit'), loc: val('ieLoc'), min: num(val('ieMin')), par: num(val('iePar')),
                   sup: val('ieSup'), buyUnit: val('ieBuy'), per: num(val('iePer')) };
@@ -1166,14 +1435,23 @@ function wireBoss(app) {
       if (r && r.ok) { itEdit = null; render(); }
     });
     wirePrep(app);
+    const ph = $('iePhoto');
+    if (ph) ph.onchange = async e => { const fl = e.target.files[0]; if (!fl) return;
+      let d; try { d = await shrinkImage(fl, 480); } catch (err) { return toast('อ่านรูปไม่ได้ ลองรูปอื่นน้า', 'bad'); }
+      act('itemPhoto', { id: itEdit.id, photo: d }); };
+    on('iePhX', () => twoTap('iePhX', () => act('itemPhoto', { id: itEdit.id, photo: '' })));
     on('ieOff', () => twoTap('ieOff', async () => { const r = await act('itemOff', { id: itEdit.id }); if (r && r.ok) { itEdit = null; render(); } }));
   }
   // ร้านค้า
   app.querySelectorAll('[data-se]').forEach(b => b.onclick = () => { supEdit = Object.assign({}, supById(b.dataset.se)); render(); window.scrollTo(0, 0); });
-  on('seNew', () => { supEdit = { name: '', phone: '', days: '', note: '' }; render(); });
+  if (itPick && bossTab === 'items') wireItemsPick(app);
+  on('itPick', startItemsPick);
+  on('seNew', () => { supEdit = { name: '', phone: '', days: '', note: '', contact: '', cutoff: '', credit: '', minOrder: '' }; render(); });
   on('seBack', () => { supEdit = null; render(); });
   on('seGo', async () => {
-    const f = { id: supEdit.id, name: val('seName'), phone: val('sePhone'), days: val('seDays'), note: val('seNote') };
+    const f = { id: supEdit.id, name: val('seName'), phone: val('sePhone'), days: val('seDays'), note: val('seNote'),
+                contact: val('seContact'), cutoff: val('seCut'), credit: val('seCredit').trim() };
+    if ($('seMin')) f.minOrder = val('seMin').replace(/,/g, '').trim();
     Object.assign(supEdit, f);
     const r = await act('supSave', { sup: f });
     if (r && r.ok) { supEdit = null; render(); }
@@ -1196,6 +1474,7 @@ function wireBoss(app) {
   }
   // ตั้งค่า
   const sp = $('stPrice'); if (sp) sp.onchange = () => act('setSetting', { key: 'เห็นราคา', value: sp.value }, 'set');
+  const sx = $('stStaffAdd'); if (sx) sx.onchange = () => act('setSetting', { key: 'พนักงานเพิ่มของได้', value: sx.checked ? 'ใช่' : 'ไม่' }, 'set');
   const sa = $('stApprove'); if (sa) sa.onchange = () => act('setSetting', { key: 'ต้องอนุมัติใบสั่ง', value: sa.checked ? 'ใช่' : 'ไม่' }, 'set');
   app.querySelectorAll('[data-ss]').forEach(b => b.onclick = () => act('setSetting', { key: b.dataset.ss, value: val(b.dataset.in).trim() }, 'set'));
   on('stCodeGo', () => act('setCode', { code: val('stCode').trim() }, 'set'));
@@ -1340,7 +1619,7 @@ function bossBillsHtml() {
   const cards = r.list.map(g => {
     const diff = g.billTotal !== null && g.sys !== null ? g.billTotal - g.sys : 0;
     return `<div class="card"><div class="row" style="flex-wrap:nowrap;align-items:flex-start"><div style="flex:1;min-width:0">
-        <div style="font-size:19px;font-weight:700">${esc(g.supName || 'ไม่ระบุร้านค้า')} ${g.type === 'คืน' ? '<span class="pill brand">คืนของ</span>' : ''} <span class="pill ${g.paid ? 'ok' : 'warn'}">${g.paid ? 'จ่ายแล้ว ' + esc(g.paidAt) : g.type === 'คืน' ? 'รอหักบิล' : 'ค้างจ่าย'}</span></div>
+        <div style="font-size:19px;font-weight:700">${esc(g.supName || 'ไม่ระบุร้านค้า')} ${g.type === 'คืน' ? '<span class="pill brand">คืนของ</span>' : ''} <span class="pill ${g.paid ? 'ok' : 'warn'}">${g.paid ? 'จ่ายแล้ว ' + esc(g.paidAt) : g.type === 'คืน' ? 'รอหักบิล' : 'ค้างจ่าย'}</span>${g.due ? ` <span class="pill ${g.due.late ? 'bad' : ''}">${g.due.late ? 'เลยกำหนด ' : 'ครบกำหนด '}${esc(g.due.at)}</span>` : ''}</div>
         <div class="muted">${esc(g.no)} · ${esc(g.at)} · ${esc(g.by)}${g.order ? ' · ' + esc(g.order) : ''}${g.bill ? ' · บิล ' + esc(g.bill) : ''}</div></div></div>
       ${r.seePrice ? `<div class="flow"><span>มูลค่าตามระบบ</span><b>${moneyCell(g.sys)}</b></div>${g.billTotal !== null ? `<div class="flow"><span>ยอดตามบิล</span><b>${moneyCell(g.billTotal)}</b></div>` : ''}
         ${Math.abs(diff) >= 1 ? `<div class="note warn" style="margin-top:6px">บิลต่างจากระบบ ${diff > 0 ? '+' : ''}${baht(diff)} บาท</div>` : ''}` : ''}
@@ -1428,6 +1707,7 @@ function wireBossMore(app, val) {
 function wireItemRows(app) {
   app.querySelectorAll('[data-it]').forEach(b => b.onclick = async () => {
     const i = itemById(b.dataset.it);
+    ieAdv = false;
     itEdit = { id: i.id, name: i.name, cat: i.cat, unit: i.unit, loc: i.loc, buyUnit: i.buyUnit === i.unit ? '' : i.buyUnit, per: i.per, min: i.min || '', par: i.par || '',
                sup: i.sup, price: S.me.seePrice && i.price ? Math.round(i.price * i.per * 100) / 100 : '',
                prep: { on: !!i.prep, was: !!i.prep, yield: i.prep ? String(i.prep.yield) : '', lines: i.prep ? i.prep.lines.map(l => ({ id: l.id, qty: String(l.qty) })) : [] } };
@@ -1504,7 +1784,7 @@ function renderProduce(app) {
   on('pGo', async () => {
     const n = num(mx.qty);
     if (n === '' || isNaN(n) || n <= 0) return toast('ใส่จำนวนที่ทำได้ก่อนน้า', 'bad');
-    const r = await act('produce', { id: i.id, qty: n });
+    const r = await act('produce', { id: i.id, qty: n }, 'produce', true);
     if (r && r.ok) mx = null;
     rerender();
   });
@@ -1529,7 +1809,7 @@ function renderReturn(app) {
   on('xGo', async () => {
     if (!mx.sup) return toast('เลือกร้านค้าก่อนน้า', 'bad');
     if (badLine(mx.lines)) return toast('ใส่จำนวนที่คืนให้ครบน้า', 'bad');
-    const r = await act('returnSup', { sup: mx.sup, reason: mx.reason, lines: mx.lines.map(l => ({ id: l.id, qty: num(l.qty) })) });
+    const r = await act('returnSup', { sup: mx.sup, reason: mx.reason, lines: mx.lines.map(l => ({ id: l.id, qty: num(l.qty) })) }, 'returnSup', true);
     if (r && r.ok) mx = null;
     rerender();
   });
@@ -1548,7 +1828,7 @@ function renderTransfer(app) {
   wirePicker('tPick', i => { mx.lines.push({ id: i.id, qty: '' }); renderTransfer(app); }, i => mx.lines.some(l => l.id === i.id));
   on('tGo', async () => {
     if (badLine(mx.lines)) return toast('ใส่จำนวนที่โอนให้ครบน้า', 'bad');
-    const r = await act('transferCreate', { to: mx.to, note: mx.note, lines: mx.lines.map(l => ({ id: l.id, qty: num(l.qty) })) });
+    const r = await act('transferCreate', { to: mx.to, note: mx.note, lines: mx.lines.map(l => ({ id: l.id, qty: num(l.qty) })) }, 'transferCreate', true);
     if (r && r.ok) { mx = null; loadMore(); }
     rerender();
   });
@@ -1586,6 +1866,7 @@ function renderRegister() {
   on('rgGo', () => { const c = $('rgCode'), code = c ? c.value.trim() : ''; if (!regPick) return; if (!code) return toast('ใส่รหัสลงทะเบียนด้วยน้า', 'bad'); act('register', { name: regPick, code }); });
 }
 function renderNoShop() {
+  $('topbar').hidden = true;
   adminButton();
   $('tabs').hidden = true;
   document.body.classList.remove('hasnav');
@@ -1603,21 +1884,180 @@ function renderNoShop() {
   on('goAdmin', () => { tab = 'admin'; adm = { view: 'home' }; renderAdmin(); loadAdmin(); });
 }
 
-// ---------- โหมดแอดมิน: สร้างร้านใหม่ 3 ขั้น (ไม่ต้องเขียนโค้ด ไม่ต้องเปิดชีต) ----------
+// ---------- คลังของ (ใช้ทั้งตอนสร้างร้าน และตอนปรับรายการของในร้าน) ----------
+let CAT = null;
+async function loadCatalog(admin) {
+  if (CAT) return CAT;
+  try { const r = await api(admin ? 'adminCatalog' : 'catalog'); if (r && r.ok) CAT = r; } catch (e) { /* แสดงปุ่มลองใหม่ */ }
+  return CAT;
+}
+/** หมวด + ของทั้งหมดที่เลือกได้ = คลัง + ของที่เพิ่มเอง (pk.custom) */
+function pkGroups(pk) {
+  const g = CAT.cats.map(c => ({ name: c.name, loc: c.loc, items: c.items.map(i => Object.assign({ cat: c.name, loc: c.loc }, i)) }));
+  const have = {};
+  g.forEach(c => c.items.forEach(i => { have[i.name] = 1; }));
+  (pk.custom || []).forEach(i => {
+    if (have[i.name]) return;
+    have[i.name] = 1;
+    let c = g.filter(x => x.name === i.cat)[0];
+    if (!c) { c = { name: i.cat, loc: '', items: [] }; g.push(c); }
+    c.items.push(Object.assign({ mine: true }, i));
+  });
+  return g;
+}
+function pkPicked(pk) { const out = []; pkGroups(pk).forEach(c => c.items.forEach(i => { if (pk.sel[i.name]) out.push(i); })); return out; }
+let pkFlat = [];
+function catPickHtml(pk) {
+  if (!CAT) return loadingHtml();
+  const groups = pkGroups(pk), q = String(pk.q || '').trim();
+  if (!pk.cat || !groups.some(c => c.name === pk.cat)) pk.cat = groups[0].name;
+  const total = groups.reduce((n, c) => n + c.items.length, 0), nSel = groups.reduce((n, c) => n + c.items.filter(i => pk.sel[i.name]).length, 0);
+  const show = q ? [{ name: 'ค้นหา "' + q + '"', items: [].concat.apply([], groups.map(c => c.items)).filter(i => i.name.indexOf(q) >= 0 || i.cat.indexOf(q) >= 0) }]
+                 : groups.filter(c => c.name === pk.cat);
+  pkFlat = [];
+  const chip = i => { pkFlat.push(i); const on = !!pk.sel[i.name];
+    return `<button data-pki="${pkFlat.length - 1}" class="${on ? 'on' : ''}" aria-pressed="${on}">${on ? '✓ ' : ''}${esc(i.name)} <i>${esc(i.unit)}${q ? ' · ' + esc(i.cat) : ''}</i></button>`; };
+  const body = show.map(c => `<div class="card"><div class="row" style="flex-wrap:nowrap;margin-bottom:10px"><h2 style="flex:1;margin:0;min-width:0">${esc(c.name)}</h2>
+      ${q ? '' : `<button class="small-btn ghost" data-pkall="1">เอาหมด</button><button class="small-btn ghost" data-pkall="0">ไม่เอา</button>`}</div>
+      ${c.items.length ? `<div class="chips" style="margin:0">${c.items.map(chip).join('')}</div>` : '<div class="muted">ไม่เจอ ลองเพิ่มเองด้านล่างได้เลย</div>'}</div>`).join('');
+  return `<div class="card" style="padding:14px 16px"><input id="pkQ" value="${esc(q)}" placeholder="ค้นหาในคลัง (${total} อย่าง) เช่น เป็ด" style="width:100%" autocomplete="off">
+      <div class="muted" style="margin-top:8px">เลือกแล้ว <b>${nSel}</b> อย่าง · แตะของเพื่อเลือก/เอาออก</div></div>
+    ${q ? '' : `<div class="chips">${groups.map(c => { const n = c.items.filter(i => pk.sel[i.name]).length;
+      return `<button data-pkc="${esc(c.name)}" class="${c.name === pk.cat ? 'on' : ''}">${esc(c.name)} <i>${n}/${c.items.length}</i></button>`; }).join('')}</div>`}
+    ${body}
+    <div class="card"><h2>＋ เพิ่มของที่ไม่มีในคลัง</h2>
+      <div class="field"><label for="pkName">ชื่อของ</label><input id="pkName" maxlength="40" placeholder="เช่น ไส้กรอกแฟรงก์"></div>
+      <div class="two"><div class="field"><label for="pkUnit">นับเป็น (หน่วย)</label><input id="pkUnit" list="pkUnits" maxlength="12" placeholder="กก."></div>
+        <div class="field"><label for="pkCat">หมวด</label><input id="pkCat" list="pkCats" maxlength="20" value="${esc(q ? '' : pk.cat)}"></div></div>
+      <datalist id="pkUnits">${(CAT.defaults.units || []).map(u => `<option value="${esc(u)}">`).join('')}</datalist>
+      <datalist id="pkCats">${groups.map(c => `<option value="${esc(c.name)}">`).join('')}</datalist>
+      <button class="small-btn" id="pkAdd" style="width:100%">＋ เพิ่มและเลือก</button></div>`;
+}
+function wireCatPick(app, pk, redraw, save) {
+  const qi = $('pkQ');
+  if (qi) qi.oninput = () => { pk.q = qi.value; save(); clearTimeout(wireCatPick.t); wireCatPick.t = setTimeout(() => { redraw(); const n = $('pkQ'); if (n) { n.focus(); n.setSelectionRange(n.value.length, n.value.length); } }, 250); };
+  app.querySelectorAll('[data-pkc]').forEach(b => b.onclick = () => { pk.cat = b.dataset.pkc; save(); redraw(); });
+  app.querySelectorAll('[data-pki]').forEach(b => b.onclick = () => { const i = pkFlat[+b.dataset.pki]; if (pk.sel[i.name]) delete pk.sel[i.name]; else pk.sel[i.name] = true; save(); redraw(); });
+  app.querySelectorAll('[data-pkall]').forEach(b => b.onclick = () => {
+    const c = pkGroups(pk).filter(x => x.name === pk.cat)[0];
+    if (c) c.items.forEach(i => { if (b.dataset.pkall === '1') pk.sel[i.name] = true; else delete pk.sel[i.name]; });
+    save(); redraw();
+  });
+  on('pkAdd', () => {
+    const name = $('pkName').value.trim(), unit = $('pkUnit').value.trim(), cat = $('pkCat').value.trim() || 'อื่นๆ';
+    if (!name) return toast('ใส่ชื่อของก่อนน้า', 'bad');
+    if (!unit) return toast('ใส่หน่วยนับด้วยน้า เช่น กก. ขวด แพ็ก', 'bad');
+    pk.custom = pk.custom || [];
+    if (!pkGroups(pk).some(c => c.items.some(i => i.name === name))) {
+      const g = CAT.cats.filter(c => c.name === cat)[0];
+      pk.custom.push({ name, unit, cat, buyUnit: '', per: 1, loc: g ? g.loc : '' });
+    }
+    pk.sel[name] = true; pk.cat = cat; pk.q = ''; save(); redraw();
+    toast('เพิ่ม ' + name + ' แล้ว', 'ok');
+  });
+}
+
+// ---------- ปรับรายการของในร้านจากคลัง (เจ้าของ/ผู้จัดการ) ----------
+let itPick = null;
+function startItemsPick() {
+  const orig = {}, custom = [];
+  S.items.forEach(i => { orig[i.name] = i.id; custom.push({ name: i.name, unit: i.unit, cat: i.cat, buyUnit: i.buyUnit, per: i.per, loc: i.loc }); });
+  itPick = { sel: Object.assign({}, ...Object.keys(orig).map(n => ({ [n]: true }))), orig, custom, cat: '', q: '' };
+  tab = 'boss'; bossTab = 'items'; itEdit = null; render(); window.scrollTo(0, 0);
+  if (!CAT) loadCatalog(false).then(() => { if (itPick) { if (!CAT) toast('📶 โหลดคลังของไม่สำเร็จ ลองใหม่น้า~', 'bad'); render(); } });
+}
+function itemsPickDiff() {
+  const add = [], off = [];
+  if (!CAT) return { add, off };
+  pkPicked(itPick).forEach(i => { if (!itPick.orig[i.name]) add.push(i); });
+  Object.keys(itPick.orig).forEach(n => { if (!itPick.sel[n]) off.push(itPick.orig[n]); });
+  return { add, off };
+}
+function itemsPickHtml() {
+  const d = itemsPickDiff(), n = d.add.length + d.off.length;
+  return `<div class="card"><div class="row" style="flex-wrap:nowrap"><h2 style="flex:1;margin:0">เลือกของจากคลัง</h2><button class="small-btn ghost" id="ipBack">กลับ</button></div>
+      <div class="muted" style="margin-top:6px">ติ๊กของที่ร้านใช้ · เอาติ๊กออก = เลิกใช้ (ประวัติยังอยู่) · เช่น ไม่มีหมู มีเป็ด → แตะหมูออก แตะเป็ดเข้า</div></div>
+    ${catPickHtml(itPick)}
+    ${n ? `<div class="note brand" style="margin:0 0 10px">${d.add.length ? 'เพิ่ม ' + d.add.length + ' อย่าง' : ''}${d.add.length && d.off.length ? ' · ' : ''}${d.off.length ? 'เลิกใช้ ' + d.off.length + ' อย่าง' : ''}</div>` : ''}
+    <button class="btn${armed === 'ipGo' ? ' confirm' : ''}" id="ipGo" ${!n || busy.itemsBulk ? 'disabled' : ''}>${busy.itemsBulk ? '<span class="busy">กำลังบันทึก</span>' : armed === 'ipGo' ? 'แตะอีกครั้ง ยืนยันเลิกใช้ ' + d.off.length + ' อย่าง' : n ? 'บันทึก' : 'ยังไม่ได้เปลี่ยนอะไร'}
+      ${d.add.length && !busy.itemsBulk && armed !== 'ipGo' ? '<small>ตั้งราคา/จุดเตือนต่อได้ที่หน้าของแต่ละอย่าง</small>' : ''}</button>`;
+}
+function wireItemsPick(app) {
+  wireCatPick(app, itPick, render, () => {});
+  on('ipBack', () => { itPick = null; render(); });
+  on('ipGo', () => {
+    const d = itemsPickDiff(), locs = S.locs || [];
+    const go = async () => {
+      const r = await act('itemsBulk', { add: d.add.map(i => ({ name: i.name, cat: i.cat, unit: i.unit, buyUnit: i.buyUnit, per: i.per, loc: locs.indexOf(i.loc) >= 0 ? i.loc : '' })), off: d.off });
+      if (r && r.ok) { itPick = null; render(); }
+    };
+    if (d.off.length) twoTap('ipGo', go); else go();
+  });
+}
+
+// ---------- โหมดแอดมิน: สร้างร้านใหม่แบบละเอียด 8 ขั้น (ไม่ต้องเขียนโค้ด ไม่ต้องเปิดชีต) ----------
 let adm = { view: 'home' }, admData = null;
-const WZ_NEW = () => ({ step: 1, name: '', owner: '', type: 'food', template: true, group: '' });
-let wz = load('kps.wizard', null) || WZ_NEW();
+const WZ_STEPS = ['ข้อมูลร้าน', 'ประเภทร้าน', 'เลือกของ', 'ร้านค้า', 'รายละเอียดของ', 'ทีมงาน', 'กฎร้าน', 'สรุป'];
+const DAYS = ['จ.', 'อ.', 'พ.', 'พฤ.', 'ศ.', 'ส.', 'อา.'];
+const WZ_NEW = () => ({ v: 2, step: 1, name: '', owner: '', group: '', phone: '', address: '', company: '', taxId: '',
+  types: [], typed: '', pick: { sel: {}, custom: [], cat: '', q: '' }, det: {}, dcat: '', sups: [], supN: 0, team: [],
+  locs: '', set: { 'เห็นราคา': 'ผู้จัดการ', 'ต้องอนุมัติใบสั่ง': 'ใช่', 'เป้าต้นทุนอาหาร': '', 'งบซื้อต่อเดือน': '', 'นับตาม': 'หมวด', 'เหตุผลทิ้งของ': '', 'พนักงานเพิ่มของได้': 'ใช่' } });
+let wz = load('kps.wizard', null);
+if (!wz || wz.v !== 2) wz = WZ_NEW();
 const saveWz = () => store('kps.wizard', wz);
-const TYPES = [['food', 'ร้านอาหาร', 'เนื้อสัตว์ ผัก เครื่องปรุง'], ['cafe', 'คาเฟ่', 'กาแฟ นม แก้ว'], ['night', 'ร้านเปิดดึก', 'เครื่องดื่ม กับแกล้ม'], ['custom', 'กำหนดเอง', 'เริ่มจากว่าง']];
 function groupNames() { return admData && admData.ok ? admData.shops.map(x => x.group).filter((g, i, a) => g && a.indexOf(g) === i) : []; }
 async function loadAdmin() {
   try { admData = await api('adminShops'); } catch (e) { admData = { ok: false, error: '📶 โหลดไม่สำเร็จ ลองใหม่น้า~' }; }
   if (tab === 'admin' && adm.view === 'home') renderAdmin();
 }
-function openShop(id) { rememberShop(id); tab = 'count'; S = null; skipSetup = false; bossCache = {}; $('app').innerHTML = loadingHtml(); refresh(true); }
+function openShop(id) { rememberShop(id); tab = 'home'; S = null; skipSetup = false; bossCache = {}; $('app').innerHTML = loadingHtml(); refresh(true); }
+function wzLocs() { return String(wz.locs || (CAT ? CAT.defaults.locs.join(',') : '')).split(',').map(x => x.trim()).filter((x, i, a) => x && a.indexOf(x) === i); }
+function wzSups() { return wz.sups.filter(s => String(s.name || '').trim()); }
+function wzAutoSup(i) { const s = wzSups().filter(x => (x.cats || []).indexOf(i.cat) >= 0)[0]; return s ? s.key : ''; }
+/** ค่าของแต่ละช่อง = ที่แก้เอง หรือค่าจากคลัง */
+function wzVal(i, f) {
+  const d = wz.det[i.name] || {};
+  if (d[f] !== undefined && (f !== 'sup' || d[f] === '' || wzSups().some(s => s.key === d[f])) && (f !== 'loc' || d[f] === '' || wzLocs().indexOf(d[f]) >= 0)) return d[f];
+  if (f === 'unit') return i.unit;
+  if (f === 'buyUnit') return i.buyUnit || '';
+  if (f === 'per') return String(i.per || 1);
+  if (f === 'loc') return wzLocs().indexOf(i.loc) >= 0 ? i.loc : '';
+  if (f === 'sup') return wzAutoSup(i);
+  return '';
+}
+function wzSet(i, f, v) { (wz.det[i.name] = wz.det[i.name] || {})[f] = v; saveWz(); }
+function wzPreselect() {
+  const key = wz.types.slice().sort().join('');
+  if (wz.typed === key) return;
+  wz.typed = key;
+  const sel = {};
+  (wz.pick.custom || []).forEach(i => { if (wz.pick.sel[i.name]) sel[i.name] = true; });
+  if (wz.types.length) CAT.cats.forEach(c => c.items.forEach(i => { if (i.tags === '*' || wz.types.some(t => i.tags.indexOf(t) >= 0)) sel[i.name] = true; }));
+  wz.pick.sel = sel; wz.pick.cat = ''; wz.pick.q = '';
+}
+function wzPayload() {
+  const keys = wzSups().map(s => s.key), set = Object.assign({}, wz.set);
+  [['เบอร์ร้าน', 'phone'], ['ที่อยู่ส่งของ', 'address'], ['ชื่อบริษัท', 'company'], ['เลขผู้เสียภาษี', 'taxId']].forEach(x => { set[x[0]] = String(wz[x[1]] || '').trim(); });
+  set['ที่เก็บ'] = wzLocs().join(',');
+  if (set['พนักงานเพิ่มของได้'] === undefined) set['พนักงานเพิ่มของได้'] = 'ใช่';
+  if (!String(set['เหตุผลทิ้งของ'] || '').trim()) delete set['เหตุผลทิ้งของ'];
+  const clean = v => String(v === undefined ? '' : v).replace(/,/g, '').trim();
+  return {
+    name: wz.name.trim(), owner: wz.owner.trim(), group: (wz.group || '').trim(), types: wz.types, settings: set,
+    sups: wzSups().map(s => ({ key: s.key, name: s.name.trim(), contact: s.contact || '', phone: s.phone || '', days: (s.days || []).join(' '),
+                               cutoff: s.cutoff || '', credit: clean(s.credit), minOrder: clean(s.minOrder), note: s.note || '' })),
+    team: wz.team.filter(m => String(m.name || '').trim()).map(m => ({ name: m.name.trim(), role: m.role })),
+    items: pkPicked(wz.pick).map(i => {
+      const sup = wzVal(i, 'sup');
+      return { name: i.name, cat: i.cat, unit: String(wzVal(i, 'unit')).trim(), buyUnit: String(wzVal(i, 'buyUnit')).trim(), per: clean(wzVal(i, 'per')),
+               price: clean(wzVal(i, 'price')), min: clean(wzVal(i, 'min')), par: clean(wzVal(i, 'par')), loc: wzVal(i, 'loc'), sup: keys.indexOf(sup) >= 0 ? sup : '' };
+    })
+  };
+}
 function renderAdmin() {
   adminButton();
   $('tabs').hidden = true;
+  $('topbar').hidden = true;
   document.body.classList.remove('hasnav');
   $('title').textContent = 'แอดมินโคตรพร้อม สต็อก';
   $('who').textContent = adm.view === 'wizard' ? 'สร้างร้านใหม่' : adm.view === 'done' ? 'สร้างร้านเสร็จ' : 'ร้านทั้งหมด';
@@ -1635,11 +2075,14 @@ function renderAdmin() {
           <input id="g_${esc(x.id)}" list="grpList2" value="${esc(x.group || '')}" maxlength="30" style="flex:1;min-width:0"><button class="small-btn" data-grp="${esc(x.id)}">บันทึก</button></div></div>` +
         (x.link ? `<button class="btn quiet" data-cp="${esc(x.id)}" style="margin:0 0 10px">ก๊อปลิงก์ + รหัส ส่งให้เจ้าของร้าน</button>` : '') +
         `<button class="btn quiet${armed === 'st' + x.id ? ' confirm' : ''}" data-st="${esc(x.id)}" style="margin:0">${armed === 'st' + x.id ? 'แตะอีกครั้ง ยืนยัน' : x.status === 'ปิด' ? 'เปิดใช้งานร้านอีกครั้ง' : 'ปิดการใช้งานร้าน'}<small>ข้อมูลยังอยู่ครบ</small></button>`)}</div></div>`; }).join('');
+  const draft = wz.name.trim() || wz.step > 1;
   app.innerHTML = `<div class="stat3" style="grid-template-columns:repeat(2,minmax(0,1fr))"><div><b>${r.shops.length}</b><span>ร้านทั้งหมด</span></div><div><b>${r.shops.filter(x => x.status !== 'ปิด').length}</b><span>ใช้งานอยู่</span></div></div>
-    <button class="btn" id="aNew">+ สร้างร้านใหม่<small>3 ขั้น ไม่ต้องเขียนโค้ด ไม่ต้องเปิดชีต</small></button><div class="gap"></div>
+    <button class="btn" id="aNew">${draft ? 'ทำร้านที่ค้างไว้ต่อ' : '+ สร้างร้านใหม่'}<small>${draft ? esc(wz.name.trim() || 'ร้านใหม่') + ' · ขั้น ' + wz.step + '/8' : '8 ขั้น ครบแบบ Food Market Hub · ไม่ต้องเขียนโค้ด'}</small></button>
+    ${draft ? `<div class="center"><button class="small-btn ghost${armed === 'wzDrop' ? ' confirm' : ''}" id="aDrop" style="margin-bottom:12px">${armed === 'wzDrop' ? 'แตะอีกครั้ง ทิ้งร้านที่ค้าง' : 'เริ่มร้านใหม่ (ทิ้งที่ค้าง)'}</button></div>` : '<div class="gap"></div>'}
     <datalist id="grpList2">${groupNames().map(g => `<option value="${esc(g)}">`).join('')}</datalist>
     <div class="card"><h2>ร้านทั้งหมด</h2>${items ? `<div class="list">${items}</div>` : `<div class="center"><div style="line-height:0">${nongSvg('happy', 100)}</div><div class="muted">ยังไม่มีร้านเลย มาสร้างร้านแรกกัน~</div></div>`}</div>`;
-  on('aNew', () => { adm = { view: 'wizard' }; renderAdmin(); });
+  on('aNew', () => { adm = { view: 'wizard' }; renderAdmin(); window.scrollTo(0, 0); });
+  on('aDrop', () => twoTap('wzDrop', () => { wz = WZ_NEW(); store('kps.wizard'); renderAdmin(); }));
   app.querySelectorAll('[data-open]').forEach(b => b.onclick = () => openShop(b.dataset.open));
   app.querySelectorAll('[data-grp]').forEach(b => b.onclick = async () => {
     const res = await act('adminSetShop', { shop: b.dataset.grp, group: $('g_' + b.dataset.grp).value.trim() }, 'adm');
@@ -1653,48 +2096,145 @@ function renderAdmin() {
   }));
 }
 function renderWizard(app) {
-  const st = wz.step, steps = `<div class="steps">${[1, 2, 3].map(i => `<i class="${i <= st ? 'on' : ''}"></i>`).join('')}</div>`;
+  const st = wz.step;
+  if (st >= 2 && !CAT) {
+    app.innerHTML = loadingHtml();
+    loadCatalog(true).then(() => {
+      if (tab !== 'admin' || adm.view !== 'wizard') return;
+      if (CAT) return renderWizard(app);
+      app.innerHTML = `<div class="card"><div class="note bad" style="margin-top:0">📶 โหลดคลังของไม่สำเร็จ</div></div><button class="btn" id="wzRetry">ลองใหม่</button>`;
+      on('wzRetry', () => renderWizard(app));
+    });
+    return;
+  }
+  const steps = `<div class="steps" style="grid-template-columns:repeat(${WZ_STEPS.length},minmax(0,1fr))">${WZ_STEPS.map((x, i) => `<i class="${i < st ? 'on' : ''}"></i>`).join('')}</div>
+    <div class="stepname">ขั้น ${st}/${WZ_STEPS.length} · ${WZ_STEPS[st - 1]}</div>`;
   const okName = () => !!(wz.name.trim() && wz.owner.trim() && !/\s/.test(wz.owner.trim()));
   const nav = (next, lbl) => `<div class="row" style="flex-wrap:nowrap;margin-top:6px"><button class="btn quiet" id="wzBack" style="width:120px;flex:none;min-height:64px">${st === 1 ? 'ยกเลิก' : 'กลับ'}</button>
     <button class="btn" id="wzNext" style="min-height:64px;font-size:24px" ${next ? '' : 'disabled'}>${lbl || 'ถัดไป'}</button></div>`;
-  const t = TYPES.filter(x => x[0] === wz.type)[0] || TYPES[0];
-  let h;
-  if (st === 1) h = `${steps}<div class="stepname">ขั้น 1 · ข้อมูลร้าน</div><div class="card">
-      <div class="field"><label for="wName">ชื่อร้าน</label><input id="wName" value="${esc(wz.name)}" maxlength="60" placeholder="เช่น ร้านตัวอย่าง"></div>
-      <div class="field"><label for="wOwner">ชื่อเล่นเจ้าของร้าน (คำเดียว)</label><input id="wOwner" value="${esc(wz.owner)}" maxlength="20" placeholder="เช่น แอน"></div>
-      <div class="field" style="margin:0"><label for="wGroup">กลุ่มสาขา <span class="muted" style="font-size:14px">(ไม่ใส่ก็ได้ · ร้านที่กลุ่มเดียวกันโอนของกันได้)</span></label>
-        <input id="wGroup" list="grpList" value="${esc(wz.group || '')}" maxlength="30" placeholder="เช่น ร้านตัวอย่าง"><datalist id="grpList">${groupNames().map(g => `<option value="${esc(g)}">`).join('')}</datalist></div></div>${nav(okName())}`;
-  else if (st === 2) h = `${steps}<div class="stepname">ขั้น 2 · ประเภทร้าน</div>
-      <div class="types">${TYPES.map(x => `<button data-ty="${x[0]}" class="${wz.type === x[0] ? 'on' : ''}">${x[1]}<small>${x[2]}</small></button>`).join('')}</div>
-      <div class="gap"></div>${wz.type !== 'custom' ? `<div class="card" style="padding:6px 20px"><div class="tg"><span>ใส่รายการของตั้งต้นให้<small>เจ้าของร้านลบ/แก้ต่อในแอปได้</small></span>
-        <input type="checkbox" class="sw" id="wTpl" ${wz.template ? 'checked' : ''} aria-label="ใส่รายการของตั้งต้น"></div></div>` : ''}${nav(true)}`;
-  else h = `${steps}<div class="stepname">ขั้น 3 · สรุป</div><div class="card"><div class="list">
-      <div class="item"><div class="main muted">ชื่อร้าน</div><b>${esc(wz.name)}</b></div>
-      <div class="item"><div class="main muted">เจ้าของ</div><b>${esc(wz.owner)}</b></div>
-      <div class="item"><div class="main muted">ประเภท</div><b>${esc(t[1])}</b></div>
-      <div class="item"><div class="main muted">ของตั้งต้น</div><b>${wz.type !== 'custom' && wz.template ? 'ใส่ให้' : 'เริ่มจากว่าง'}</b></div>
-      ${wz.group ? `<div class="item"><div class="main muted">กลุ่มสาขา</div><b>${esc(wz.group)}</b></div>` : ''}</div>
-      <div class="note ok">ระบบสร้างไฟล์ชีตของร้านให้เอง · สร้างแล้วแก้ทุกอย่างในแอปได้</div></div>
+  const picked = st >= 3 ? pkPicked(wz.pick) : [];
+  const pcats = picked.map(i => i.cat).filter((c, i, a) => a.indexOf(c) === i);
+  const fld = (id, label, v, extra) => `<div class="field"><label for="${id}">${label}</label><input id="${id}" value="${esc(v)}" ${extra || ''}></div>`;
+  let h = steps;
+  if (st === 1) h += `<div class="card">
+      ${fld('wName', 'ชื่อร้าน', wz.name, 'maxlength="60" placeholder="เช่น ร้านตัวอย่าง"')}
+      ${fld('wOwner', 'ชื่อเล่นเจ้าของร้าน (คำเดียว)', wz.owner, 'maxlength="20" placeholder="เช่น แอน"')}
+      <div class="field" style="margin:0"><label for="wGroup">กลุ่มสาขา <span class="muted" style="font-size:14px">(ไม่ใส่ก็ได้ · ร้านกลุ่มเดียวกันโอนของกันได้)</span></label>
+        <input id="wGroup" list="grpList" value="${esc(wz.group || '')}" maxlength="30" placeholder="เช่น ร้านตัวอย่าง"><datalist id="grpList">${groupNames().map(g => `<option value="${esc(g)}">`).join('')}</datalist></div></div>
+    <div class="card"><h2>ข้อมูลสำหรับใบสั่งซื้อ <span class="muted" style="font-size:15px">(ไม่ใส่ก็ได้)</span></h2>
+      ${fld('wPhone', 'เบอร์ร้าน', wz.phone, 'inputmode="tel" maxlength="20" placeholder="เช่น 0812345678"')}
+      ${fld('wAddr', 'ที่อยู่ให้ร้านค้ามาส่ง', wz.address, 'maxlength="200" placeholder="บ้านเลขที่ ถนน เขต"')}
+      <div class="two">${fld('wCo', 'ชื่อบริษัท', wz.company, 'maxlength="60"')}${fld('wTax', 'เลขผู้เสียภาษี', wz.taxId, 'inputmode="numeric" maxlength="20"')}</div></div>${nav(okName())}`;
+  else if (st === 2) h += `<div class="muted" style="margin-bottom:10px">เลือกได้หลายแบบ ระบบจะติ๊กของที่ร้านแบบนี้ใช้ให้ก่อน แล้วค่อยเลือกเพิ่ม/เอาออกขั้นถัดไป</div>
+      <div class="types">${CAT.types.map(x => `<button data-ty="${x[0]}" class="${wz.types.indexOf(x[0]) >= 0 ? 'on' : ''}" aria-pressed="${wz.types.indexOf(x[0]) >= 0}">${esc(x[1])}<small>${esc(x[2])}</small></button>`).join('')}</div>
+      ${wz.typed && wz.typed !== wz.types.slice().sort().join('') ? '<div class="note warn">เปลี่ยนประเภทแล้ว ระบบจะติ๊กของให้ใหม่ (ของที่เพิ่มเองยังอยู่)</div>' : ''}
+      <div class="gap"></div>${nav(true, wz.types.length ? 'ถัดไป' : 'เริ่มจากว่าง')}`;
+  else if (st === 3) h += catPickHtml(wz.pick) + nav(true, picked.length ? `ถัดไป (${picked.length} อย่าง)` : 'ข้ามไปก่อน');
+  else if (st === 4) h += `<div class="muted" style="margin-bottom:10px">ร้านที่ซื้อของประจำ (ตลาด แม็คโคร เจ้าส่งผัก ฯลฯ) · ติ๊ก "ส่งของหมวด" ระบบจะผูกของให้เอง · ไม่มีก็ข้ามได้</div>
+      ${wz.sups.map((s, k) => `<div class="card"><div class="row" style="flex-wrap:nowrap;margin-bottom:8px"><h2 style="flex:1;margin:0">ร้านค้า ${k + 1}</h2><button class="small-btn red" data-sx="${k}">ลบ</button></div>
+        <div class="field"><label for="sf${k}name">ชื่อร้านค้า</label><input id="sf${k}name" data-sf="${k}" data-f="name" value="${esc(s.name)}" maxlength="40" placeholder="เช่น ร้านผักป้าแอน"></div>
+        <div class="two"><div class="field"><label for="sf${k}contact">ผู้ติดต่อ</label><input id="sf${k}contact" data-sf="${k}" data-f="contact" value="${esc(s.contact || '')}" maxlength="30"></div>
+          <div class="field"><label for="sf${k}phone">เบอร์โทร</label><input id="sf${k}phone" data-sf="${k}" data-f="phone" inputmode="tel" value="${esc(s.phone || '')}" maxlength="20"></div></div>
+        <div class="field"><div class="lb">มาส่งวันไหน</div><div class="chips" style="margin:0">${DAYS.concat(['ทุกวัน']).map(d => `<button data-sday="${k}" data-d="${d}" class="${(s.days || []).indexOf(d) >= 0 ? 'on' : ''}">${d}</button>`).join('')}</div></div>
+        <div class="two"><div class="field"><label for="sf${k}cutoff">ต้องสั่งก่อน</label><input id="sf${k}cutoff" data-sf="${k}" data-f="cutoff" type="time" value="${esc(s.cutoff || '')}"></div>
+          <div class="field"><label for="sf${k}credit">เครดิต (วัน)</label><input id="sf${k}credit" data-sf="${k}" data-f="credit" inputmode="numeric" value="${esc(s.credit || '')}" placeholder="0 = เงินสด"></div></div>
+        <div class="two"><div class="field"><label for="sf${k}min">ยอดสั่งขั้นต่ำ (บาท)</label><input id="sf${k}min" data-sf="${k}" data-f="minOrder" inputmode="decimal" value="${esc(s.minOrder || '')}"></div>
+          <div class="field"><label for="sf${k}note">หมายเหตุ</label><input id="sf${k}note" data-sf="${k}" data-f="note" value="${esc(s.note || '')}" maxlength="80"></div></div>
+        ${pcats.length ? `<div class="field" style="margin:0"><div class="lb">ส่งของหมวด</div><div class="chips" style="margin:0">${pcats.map(c => `<button data-scat="${k}" data-c="${esc(c)}" class="${(s.cats || []).indexOf(c) >= 0 ? 'on' : ''}">${esc(c)}</button>`).join('')}</div></div>` : ''}</div>`).join('')}
+      <button class="btn quiet" id="wSupAdd">＋ เพิ่มร้านค้า</button>${nav(true, wzSups().length ? 'ถัดไป' : 'ข้ามไปก่อน')}`;
+  else if (st === 5) {
+    if (!wz.dcat || pcats.indexOf(wz.dcat) < 0) wz.dcat = pcats[0] || '';
+    const list = picked.filter(i => i.cat === wz.dcat), locs = wzLocs(), sups = wzSups();
+    const supOpt = v => `<option value="">— ไม่ระบุ —</option>${sups.map(s => `<option value="${esc(s.key)}" ${v === s.key ? 'selected' : ''}>${esc(s.name)}</option>`).join('')}`;
+    const locOpt = v => `<option value="">— ไม่ระบุ —</option>${locs.map(l => `<option ${v === l ? 'selected' : ''}>${esc(l)}</option>`).join('')}`;
+    const inp = (k, f, label, mode) => { const id = 'd' + k + f; return `<div><label for="${id}">${label}</label><input id="${id}" data-di="${k}" data-df="${f}" ${mode ? 'inputmode="' + mode + '"' : 'list="wzUnits"'} value="${esc(wzVal(list[k], f))}"></div>`; };
+    h += `<div class="muted" style="margin-bottom:10px">ไม่ต้องครบตอนนี้ ข้ามได้ แล้วตั้งต่อในแอป · ราคา = ต่อ 1 หน่วยซื้อ · "เตือนเมื่อเหลือ" ใช้เตือนของใกล้หมด</div>
+      <div class="card"><div class="field" style="margin:0"><label for="wLocs">ที่เก็บของในร้าน (คั่นด้วย ,)</label><input id="wLocs" value="${esc(wzLocs().join(','))}" maxlength="300"></div></div>
+      ${pcats.length ? `<div class="chips">${pcats.map(c => `<button data-dc="${esc(c)}" class="${c === wz.dcat ? 'on' : ''}">${esc(c)} <i>${picked.filter(i => i.cat === c).length}</i></button>`).join('')}</div>
+      <div class="card"><h2>ทั้งหมวด ${esc(wz.dcat)}</h2><div class="two"><div class="field"><label for="wbSup">ร้านค้า</label><select id="wbSup">${supOpt('')}</select></div>
+        <div class="field"><label for="wbLoc">ที่เก็บ</label><select id="wbLoc">${locOpt('')}</select></div></div>
+        <button class="small-btn ghost" id="wbGo" style="width:100%">ใช้กับของทั้งหมวด (${list.length} อย่าง)</button></div>
+      <datalist id="wzUnits">${CAT.defaults.units.map(u => `<option value="${esc(u)}">`).join('')}</datalist>
+      <div class="wide">${list.map((i, k) => `<div class="rline"><div class="top"><b>${esc(i.name)}</b></div><div class="in">
+        ${inp(k, 'unit', 'นับเป็น')}${inp(k, 'buyUnit', 'ซื้อเป็น')}${inp(k, 'per', '1 หน่วยซื้อ = กี่หน่วยนับ', 'decimal')}${inp(k, 'price', 'ราคา/หน่วยซื้อ (บาท)', 'decimal')}
+        ${inp(k, 'min', 'เตือนเมื่อเหลือ', 'decimal')}${inp(k, 'par', 'ควรมีเต็มที่', 'decimal')}
+        <div><label for="d${k}loc">ที่เก็บ</label><select id="d${k}loc" data-di="${k}" data-df="loc" style="width:100%">${locOpt(wzVal(i, 'loc'))}</select></div>
+        <div><label for="d${k}sup">ร้านค้า</label><select id="d${k}sup" data-di="${k}" data-df="sup" style="width:100%">${supOpt(wzVal(i, 'sup'))}</select></div></div></div>`).join('')}</div>`
+      : '<div class="card"><div class="muted">ยังไม่ได้เลือกของ ข้ามได้เลย</div></div>'}${nav(true)}`;
+  } else if (st === 6) h += `<div class="card"><div class="item" style="padding-top:0"><div class="main"><div class="name">${esc(wz.owner)}</div></div><span class="pill brand">เจ้าของ</span></div>
+      ${wz.team.map((m, k) => `<div class="row" style="flex-wrap:nowrap;margin-top:10px"><input data-tn="${k}" value="${esc(m.name)}" maxlength="20" placeholder="ชื่อเล่น" style="flex:1;min-width:0" aria-label="ชื่อเล่นคนที่ ${k + 1}">
+        <select data-trl="${k}" style="width:130px" aria-label="บทบาท"><option ${m.role !== 'ผู้จัดการ' ? 'selected' : ''}>พนักงาน</option><option ${m.role === 'ผู้จัดการ' ? 'selected' : ''}>ผู้จัดการ</option></select>
+        <button class="small-btn red" data-tx="${k}" aria-label="ลบ">✕</button></div>`).join('')}
+      <button class="small-btn ghost" id="wTeamAdd" style="width:100%;margin-top:12px">＋ เพิ่มคน</button>
+      <div class="muted" style="font-size:15px;margin-top:10px">ชื่อเล่นคำเดียว · แต่ละคนแตะลิงก์ร้าน เลือกชื่อตัวเอง ใส่รหัส · ผู้จัดการอนุมัติใบสั่งและดูรายงานได้</div></div>${nav(true, wz.team.some(m => m.name.trim()) ? 'ถัดไป' : 'ข้ามไปก่อน')}`;
+  else if (st === 7) { const s = wz.set;
+    h += `<div class="card" style="padding:6px 20px">
+      <div class="tg"><span>ใครเห็นตัวเลขเงิน<small>พนักงานไม่เห็นเสมอ</small></span><select id="wsPrice" style="width:150px"><option value="ผู้จัดการ" ${s['เห็นราคา'] !== 'เจ้าของ' ? 'selected' : ''}>เจ้าของ+ผจก.</option><option value="เจ้าของ" ${s['เห็นราคา'] === 'เจ้าของ' ? 'selected' : ''}>เจ้าของคนเดียว</option></select></div>
+      <div class="tg"><span>พนักงานขอของ ต้องรออนุมัติ<small>ปิด = พนักงานทำใบสั่งได้เลย</small></span><input type="checkbox" class="sw" id="wsApprove" ${s['ต้องอนุมัติใบสั่ง'] !== 'ไม่' ? 'checked' : ''} aria-label="ต้องอนุมัติใบสั่ง"></div>
+      <div class="tg"><span>พนักงาน/แคชเชียร์ เพิ่มของใหม่ได้<small>เจอของใหม่ตอนนับ/รับ เพิ่มเองได้ พร้อมรูป</small></span><input type="checkbox" class="sw" id="wsStaffAdd" ${s['พนักงานเพิ่มของได้'] !== 'ไม่' ? 'checked' : ''} aria-label="พนักงานเพิ่มของใหม่ได้"></div></div>
+    <div class="card"><div class="two">${fld('wsTarget', 'เป้าต้นทุนอาหาร (%)', s['เป้าต้นทุนอาหาร'], 'inputmode="decimal" placeholder="เช่น 35"')}${fld('wsBudget', 'งบซื้อต่อเดือน (บาท)', s['งบซื้อต่อเดือน'], 'inputmode="decimal" placeholder="ไม่ตั้งก็ได้"')}</div>
+      <div class="field"><label for="wsCountBy">หน้านับของ จัดตาม</label><select id="wsCountBy"><option ${s['นับตาม'] !== 'ที่เก็บ' ? 'selected' : ''}>หมวด</option><option ${s['นับตาม'] === 'ที่เก็บ' ? 'selected' : ''}>ที่เก็บ</option></select></div>
+      <div class="field" style="margin:0"><label for="wsReasons">เหตุผลทิ้งของ (คั่นด้วย ,)</label><input id="wsReasons" value="${esc(s['เหตุผลทิ้งของ'] || CAT.defaults.reasons.join(','))}" maxlength="300"></div></div>${nav(true)}`;
+  } else {
+    const p = wzPayload(), t = CAT.types.filter(x => wz.types.indexOf(x[0]) >= 0).map(x => x[1]).join(' · ') || 'กำหนดเอง';
+    const row = (lbl, v, go) => `<div class="item"><div class="main"><div class="muted">${lbl}</div><div class="name" style="font-size:17px">${v}</div></div><button class="small-btn ghost" data-go="${go}">แก้</button></div>`;
+    h += `<div class="card"><div class="list">
+      ${row('ร้าน', esc(p.name) + (p.group ? ' · กลุ่ม ' + esc(p.group) : ''), 1)}${row('เจ้าของ', esc(p.owner), 1)}${row('ประเภท', esc(t), 2)}
+      ${row('ของ', p.items.length + ' อย่าง · ' + pcats.length + ' หมวด', 3)}${row('ร้านค้า', p.sups.length ? p.sups.map(s => esc(s.name)).join(', ') : 'ยังไม่มี', 4)}
+      ${row('ตั้งราคาแล้ว / ตั้งจุดเตือนแล้ว', p.items.filter(i => i.price !== '').length + ' / ' + p.items.filter(i => i.min !== '').length + ' อย่าง', 5)}
+      ${row('ทีมงาน', (p.team.length + 1) + ' คน', 6)}${row('ใครเห็นเงิน · อนุมัติใบสั่ง', esc(p.settings['เห็นราคา'] === 'เจ้าของ' ? 'เจ้าของคนเดียว' : 'เจ้าของ+ผู้จัดการ') + ' · ' + (p.settings['ต้องอนุมัติใบสั่ง'] === 'ไม่' ? 'ไม่ต้อง' : 'ต้องอนุมัติ'), 7)}</div>
+      <div class="note ok">ระบบสร้างไฟล์ชีตของร้าน + ลิงก์ร้าน + รหัสลงทะเบียน ให้เอง · สร้างแล้วแก้ทุกอย่างในแอปได้</div></div>
       ${nav(!busy.adminCreateShop, busy.adminCreateShop ? '<span class="busy">กำลังสร้าง</span>' : 'สร้างร้าน')}`;
+  }
   app.innerHTML = h;
-  const nm = $('wName'), ow = $('wOwner');
-  const upd = () => { const nx = $('wzNext'); if (nx) nx.disabled = !okName(); };
-  if (nm) nm.oninput = () => { wz.name = nm.value; saveWz(); upd(); };
-  if (ow) ow.oninput = () => { wz.owner = ow.value; saveWz(); upd(); };
-  const gp = $('wGroup'); if (gp) gp.oninput = () => { wz.group = gp.value; saveWz(); };
-  app.querySelectorAll('[data-ty]').forEach(b => b.onclick = () => { wz.type = b.dataset.ty; saveWz(); renderWizard(app); });
-  const tp = $('wTpl'); if (tp) tp.onchange = () => { wz.template = tp.checked; saveWz(); };
-  on('wzBack', () => { if (st === 1) { adm = { view: 'home' }; renderAdmin(); loadAdmin(); return; } wz.step--; saveWz(); renderWizard(app); });
+  const redraw = () => renderWizard(app);
+  const bind = (id, f) => { const el = $(id); if (el) el.oninput = () => { wz[f] = el.value; saveWz(); const nx = $('wzNext'); if (nx && st === 1) nx.disabled = !okName(); }; };
+  [['wName', 'name'], ['wOwner', 'owner'], ['wGroup', 'group'], ['wPhone', 'phone'], ['wAddr', 'address'], ['wCo', 'company'], ['wTax', 'taxId']].forEach(x => bind(x[0], x[1]));
+  app.querySelectorAll('[data-ty]').forEach(b => b.onclick = () => { const k = b.dataset.ty, i = wz.types.indexOf(k); if (i >= 0) wz.types.splice(i, 1); else wz.types.push(k); saveWz(); redraw(); });
+  if (st === 3) wireCatPick(app, wz.pick, redraw, saveWz);
+  // ร้านค้า
+  app.querySelectorAll('[data-sf]').forEach(el => el.oninput = () => { wz.sups[+el.dataset.sf][el.dataset.f] = el.value; saveWz(); });
+  app.querySelectorAll('[data-sday]').forEach(b => b.onclick = () => { const s = wz.sups[+b.dataset.sday], d = b.dataset.d; s.days = s.days || [];
+    const i = s.days.indexOf(d); if (i >= 0) s.days.splice(i, 1); else if (d === 'ทุกวัน') s.days = ['ทุกวัน']; else { s.days = s.days.filter(x => x !== 'ทุกวัน'); s.days.push(d); s.days.sort((a, c) => DAYS.indexOf(a) - DAYS.indexOf(c)); }
+    saveWz(); redraw(); });
+  app.querySelectorAll('[data-scat]').forEach(b => b.onclick = () => { const s = wz.sups[+b.dataset.scat], c = b.dataset.c; s.cats = s.cats || [];
+    const i = s.cats.indexOf(c); if (i >= 0) s.cats.splice(i, 1); else s.cats.push(c); saveWz(); redraw(); });
+  app.querySelectorAll('[data-sx]').forEach(b => b.onclick = () => { wz.sups.splice(+b.dataset.sx, 1); saveWz(); redraw(); });
+  on('wSupAdd', () => { wz.supN = (wz.supN || 0) + 1; wz.sups.push({ key: 's' + wz.supN, name: '', contact: '', phone: '', days: [], cutoff: '', credit: '', minOrder: '', note: '', cats: [] }); saveWz(); redraw();
+    const n = $('sf' + (wz.sups.length - 1) + 'name'); if (n) n.focus(); });
+  // รายละเอียดของ
+  if (st === 5) {
+    const list = picked.filter(i => i.cat === wz.dcat);
+    app.querySelectorAll('[data-di]').forEach(el => { const ev = el.tagName === 'SELECT' ? 'onchange' : 'oninput'; el[ev] = () => wzSet(list[+el.dataset.di], el.dataset.df, el.value); });
+    app.querySelectorAll('[data-dc]').forEach(b => b.onclick = () => { wz.dcat = b.dataset.dc; saveWz(); redraw(); });
+    const wl = $('wLocs'); if (wl) wl.onchange = () => { wz.locs = wl.value; saveWz(); redraw(); };
+    on('wbGo', () => { const sv = $('wbSup').value, lv = $('wbLoc').value;
+      list.forEach(i => { if (sv) wzSet(i, 'sup', sv); if (lv) wzSet(i, 'loc', lv); });
+      redraw(); toast(sv || lv ? 'ใช้กับ ' + list.length + ' อย่างแล้ว' : 'เลือกร้านค้าหรือที่เก็บก่อนน้า', sv || lv ? 'ok' : 'bad'); });
+  }
+  // ทีมงาน
+  app.querySelectorAll('[data-tn]').forEach(el => el.oninput = () => { wz.team[+el.dataset.tn].name = el.value; saveWz(); });
+  app.querySelectorAll('[data-trl]').forEach(el => el.onchange = () => { wz.team[+el.dataset.trl].role = el.value; saveWz(); });
+  app.querySelectorAll('[data-tx]').forEach(b => b.onclick = () => { wz.team.splice(+b.dataset.tx, 1); saveWz(); redraw(); });
+  on('wTeamAdd', () => { wz.team.push({ name: '', role: 'พนักงาน' }); saveWz(); redraw(); const ins = app.querySelectorAll('[data-tn]'); if (ins.length) ins[ins.length - 1].focus(); });
+  // กฎร้าน
+  const setv = (id, k, ev, fn) => { const el = $(id); if (el) el[ev || 'oninput'] = () => { wz.set[k] = fn ? fn(el) : el.value; saveWz(); }; };
+  setv('wsPrice', 'เห็นราคา', 'onchange'); setv('wsStaffAdd', 'พนักงานเพิ่มของได้', 'onchange', el => el.checked ? 'ใช่' : 'ไม่'); setv('wsApprove', 'ต้องอนุมัติใบสั่ง', 'onchange', el => el.checked ? 'ใช่' : 'ไม่');
+  setv('wsTarget', 'เป้าต้นทุนอาหาร'); setv('wsBudget', 'งบซื้อต่อเดือน'); setv('wsCountBy', 'นับตาม', 'onchange'); setv('wsReasons', 'เหตุผลทิ้งของ');
+  app.querySelectorAll('[data-go]').forEach(b => b.onclick = () => { wz.step = +b.dataset.go; saveWz(); redraw(); window.scrollTo(0, 0); });
+  on('wzBack', () => { if (st === 1) { adm = { view: 'home' }; renderAdmin(); loadAdmin(); return; } wz.step--; saveWz(); redraw(); window.scrollTo(0, 0); });
   on('wzNext', async () => {
-    if (st < 3) { wz.step++; saveWz(); renderWizard(app); window.scrollTo(0, 0); return; }
-    const res = await act('adminCreateShop', { name: wz.name.trim(), owner: wz.owner.trim(), type: wz.type, template: wz.type !== 'custom' && wz.template, group: (wz.group || '').trim() });
-    if (res && res.ok) { adm = { view: 'done', res }; wz = WZ_NEW(); store('kps.wizard'); admData = null; renderAdmin(); }
+    if (st === 4 && wz.sups.some(s => !String(s.name || '').trim() && (s.phone || s.contact || (s.cats || []).length))) return toast('ร้านค้าบางร้านยังไม่มีชื่อน้า', 'bad');
+    if (st < WZ_STEPS.length) { if (st === 2) wzPreselect(); wz.step++; saveWz(); redraw(); window.scrollTo(0, 0); return; }
+    const res = await act('adminCreateShop', wzPayload());
+    if (res && res.ok) { adm = { view: 'done', res }; wz = WZ_NEW(); store('kps.wizard'); admData = null; renderAdmin(); window.scrollTo(0, 0); }
   });
 }
 function renderDone(app) {
   const r = adm.res, id = r.shop.id;
+  const got = [r.items ? 'ของ ' + r.items + ' อย่าง' : '', r.sups ? 'ร้านค้า ' + r.sups + ' ร้าน' : '', r.team > 1 ? 'ทีม ' + r.team + ' คน' : ''].filter(String).join(' · ');
   app.innerHTML = `<div class="card hero orange"><div class="hm">${nongSvg('party', 120)}</div>
-      <h2 style="margin:4px 0 0;font-size:26px">สร้างร้านเสร็จแล้ว!</h2><div style="font-weight:700">${esc(r.shop.name)}${r.items ? ` · ของตั้งต้น ${r.items} อย่าง` : ''}</div></div>
+      <h2 style="margin:4px 0 0;font-size:26px">สร้างร้านเสร็จแล้ว!</h2><div style="font-weight:700">${esc(r.shop.name)}${got ? ' · ' + esc(got) : ''}</div></div>
     <div class="card"><div class="row" style="flex-wrap:nowrap;align-items:center;gap:14px">${r.link ? '<div class="qr" id="qrBox"></div>' : ''}
       <div style="min-width:0"><div class="muted" style="font-weight:700">รหัสร้าน</div><div class="bigcode">${esc(id)}</div>
         <div class="muted" style="font-weight:700;margin-top:6px">รหัสลงทะเบียน</div><div class="bigcode" style="font-size:28px">${esc(r.code)}</div></div></div>
